@@ -1,263 +1,734 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SEDOR | Mama's First Choice</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <title>SEDOR | The Heart of Every Albanian Kitchen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --cream: #f9f5f0;
-      --dark: #1a1410;
+      --cream: #f8f4ef;
+      --white: #ffffff;
+      --dark: #111009;
       --gold: #b8956a;
       --gold-light: #d4b48a;
       --mid: #5c4a3a;
-      --border: rgba(184,149,106,0.25);
+      --gray: #888;
+      --border: rgba(184,149,106,0.2);
+      --nav-h: 80px;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+    body { font-family: 'Jost', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; }
 
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.4rem 4rem;
-      background: rgba(249,245,240,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-brand-wrap { display: flex; flex-direction: column; }
-    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; letter-spacing: 0.25em; color: var(--dark); text-decoration: none; }
-    .nav-tagline { font-size: 0.58rem; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.3s; }
-    .nav-links a:hover { color: var(--gold); }
+```
+[data-en], [data-al] { display: none; }
+body.lang-en [data-en] { display: block; }
+body.lang-en span[data-en], body.lang-en a[data-en], body.lang-en div[data-en] { display: inline; }
+body.lang-al [data-al] { display: block; }
+body.lang-al span[data-al], body.lang-al a[data-al], body.lang-al div[data-al] { display: inline; }
 
-    .hero { min-height: 100vh; display: flex; align-items: center; padding: 10rem 4rem 6rem; position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(184,149,106,0.08) 0%, transparent 70%); }
-    .hero-content { max-width: 600px; animation: fadeUp 1s ease both; }
-    .hero-eyebrow { font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
-    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(4rem, 8vw, 7rem); font-weight: 600; line-height: 1.0; letter-spacing: 0.2em; color: var(--dark); margin-bottom: 0.5rem; }
-    .hero-title-sub { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 2vw, 1.6rem); font-weight: 300; font-style: italic; color: var(--gold); margin-bottom: 2rem; }
-    .hero-sub { font-size: 0.9rem; font-weight: 300; line-height: 1.9; color: var(--mid); max-width: 420px; margin-bottom: 3rem; }
-    .btn-primary { display: inline-block; padding: 0.9rem 2.6rem; background: var(--dark); color: var(--cream); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--dark); transition: all 0.35s; }
-    .btn-primary:hover { background: transparent; color: var(--dark); }
-    .btn-outline { display: inline-block; margin-left: 1.2rem; padding: 0.9rem 2.6rem; background: transparent; color: var(--dark); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--border); transition: all 0.35s; }
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 4rem;
+  transition: background 0.4s, box-shadow 0.4s;
+}
+nav.scrolled { background: rgba(255,255,255,0.97); box-shadow: 0 1px 0 var(--border); backdrop-filter: blur(10px); }
+.nav-logo-wrap { display: flex; flex-direction: column; text-decoration: none; }
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; letter-spacing: 0.25em; color: var(--white); transition: color 0.4s; line-height: 1; }
+nav.scrolled .nav-logo { color: var(--dark); }
+.nav-tagline { font-size: 0.55rem; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; }
+.nav-right { display: flex; align-items: center; gap: 2rem; }
+.nav-links { display: flex; gap: 1.8rem; list-style: none; }
+.nav-links a { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); text-decoration: none; transition: color 0.3s; }
+nav.scrolled .nav-links a { color: var(--mid); }
+.nav-links a:hover { color: var(--gold); }
+.lang-switch { display: flex; gap: 0.3rem; }
+.lang-btn { background: none; border: 1px solid rgba(255,255,255,0.35); color: rgba(255,255,255,0.65); font-family: 'Jost',sans-serif; font-size: 0.62rem; letter-spacing: 0.1em; padding: 0.28rem 0.65rem; cursor: pointer; transition: all 0.3s; }
+nav.scrolled .lang-btn { border-color: var(--border); color: var(--mid); }
+.lang-btn.active, .lang-btn:hover { background: var(--gold); border-color: var(--gold); color: white; }
+.nav-mobile-btn { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.nav-mobile-btn span { display: block; width: 24px; height: 1.5px; background: white; transition: all 0.3s; }
+nav.scrolled .nav-mobile-btn span { background: var(--dark); }
 
-    .hero-deco { position: absolute; right: 0; top: 0; bottom: 0; width: 42%; background: var(--dark); clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%); overflow: hidden; }
-    .hero-deco img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; mix-blend-mode: luminosity; }
-    .hero-deco-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(184,149,106,0.3), transparent 60%); }
+/* HERO */
+.hero { height: 100vh; min-height: 600px; position: relative; overflow: hidden; display: flex; align-items: center; background: var(--dark); }
+.hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1a0f08 0%, #2a1a10 40%, #1a1208 100%); }
+.hero-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 40%, rgba(184,149,106,0.15) 0%, transparent 60%); }
+.hero-img { position: absolute; right: 0; top: 0; bottom: 0; width: 55%; overflow: hidden; }
+.hero-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.35; filter: grayscale(20%); }
+.hero-img::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to right, var(--dark) 0%, transparent 50%); }
+.hero-content { position: relative; z-index: 2; padding: 0 4rem; max-width: 660px; animation: fadeUp 1.2s ease both; }
+.hero-eyebrow { font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+.hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+.hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 300; line-height: 1.05; color: white; margin-bottom: 1rem; }
+.hero-title strong { font-weight: 600; display: block; letter-spacing: 0.15em; font-size: 1.2em; }
+.hero-slogan { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 2vw, 1.5rem); font-style: italic; color: var(--gold-light); margin-bottom: 1.5rem; }
+.hero-subtitle { font-size: 0.88rem; font-weight: 300; line-height: 1.9; color: rgba(255,255,255,0.55); max-width: 460px; margin-bottom: 2.5rem; }
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 0.95rem 2.6rem; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; transition: all 0.35s; cursor: pointer; border: none; font-family: 'Jost',sans-serif; }
+.btn-gold { background: var(--gold); color: white; }
+.btn-gold:hover { background: var(--gold-light); }
+.btn-outline-white { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.35); }
+.btn-outline-white:hover { background: white; color: var(--dark); }
+.btn-outline-dark { background: transparent; color: var(--dark); border: 1px solid rgba(0,0,0,0.15); }
+.btn-outline-dark:hover { border-color: var(--gold); color: var(--gold); }
+.hero-scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.35); font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; animation: bounce 2s infinite; }
+.hero-scroll::after { content: ''; display: block; width: 1px; height: 40px; background: rgba(255,255,255,0.25); }
 
-    .brands { padding: 4rem 4rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .brands-label { text-align: center; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 2.5rem; }
-    .brands-grid { display: flex; justify-content: center; align-items: center; gap: 5rem; flex-wrap: wrap; }
-    .brand-item { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; letter-spacing: 0.1em; color: var(--mid); opacity: 0.55; transition: all 0.3s; cursor: default; }
-    .brand-item:hover { opacity: 1; color: var(--dark); }
+/* TICKER */
+.ticker { background: var(--gold); padding: 0.75rem 0; overflow: hidden; white-space: nowrap; }
+.ticker-inner { display: inline-flex; gap: 3.5rem; animation: ticker 25s linear infinite; }
+.ticker-item { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: white; }
+.ticker-dot { color: rgba(255,255,255,0.45); }
 
-    .section-header { text-align: center; margin-bottom: 4rem; }
-    .section-eyebrow { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.2; color: var(--dark); }
-    .section-title em { font-style: italic; color: var(--gold); }
+/* SECTIONS */
+section { padding: 6rem 4rem; }
+.section-label { font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; }
+.section-label::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.15; color: var(--dark); }
+.section-title em { font-style: italic; color: var(--gold); }
+.section-intro { font-size: 0.88rem; font-weight: 300; line-height: 2; color: var(--mid); max-width: 520px; margin-top: 1.2rem; }
 
-    .products { padding: 7rem 4rem; }
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; }
-    .product-card { position: relative; overflow: hidden; background: #ede9e3; aspect-ratio: 3/4; cursor: pointer; }
-    .product-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
-    .product-card:hover img { transform: scale(1.06); }
-    .product-card-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1.8rem 1.8rem; background: linear-gradient(to top, rgba(26,20,16,0.85) 0%, transparent 100%); transform: translateY(20px); opacity: 0; transition: all 0.4s; }
-    .product-card:hover .product-card-info { transform: translateY(0); opacity: 1; }
-    .product-card-brand { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.4rem; }
-    .product-card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300; color: var(--cream); }
+/* SLOGAN BAND */
+.slogan-band { background: var(--cream); padding: 5rem 4rem; text-align: center; }
+.slogan-main { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 4.5rem); font-weight: 300; line-height: 1.2; color: var(--dark); max-width: 900px; margin: 0 auto 1.5rem; }
+.slogan-main em { font-style: italic; color: var(--gold); }
+.slogan-sub { font-size: 0.8rem; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid); }
 
-    .about { padding: 7rem 4rem; background: var(--dark); color: var(--cream); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
-    .about-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.15; margin-bottom: 2rem; }
-    .about-title em { font-style: italic; color: var(--gold); }
-    .about-text { font-size: 0.88rem; font-weight: 300; line-height: 2; color: rgba(249,245,240,0.65); margin-bottom: 1.5rem; }
-    .about-stats { display: flex; gap: 3rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2.5rem; margin-top: 1rem; }
-    .stat-number { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: var(--gold); line-height: 1; }
-    .stat-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(249,245,240,0.45); margin-top: 0.4rem; }
-    .about-image { aspect-ratio: 4/5; overflow: hidden; position: relative; }
-    .about-image img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); }
-    .about-image::after { content: ''; position: absolute; inset: 0; border: 1px solid rgba(184,149,106,0.3); transform: translate(16px, 16px); pointer-events: none; }
+/* SERVE */
+.serve { background: white; }
+.serve-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 3.5rem; }
+.serve-card { position: relative; overflow: hidden; height: 480px; cursor: pointer; }
+.serve-card-bg { position: absolute; inset: 0; transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
+.serve-card:hover .serve-card-bg { transform: scale(1.04); }
+.serve-card-bg.horeca { background: linear-gradient(135deg, #1a0f08, #3a2010); }
+.serve-card-bg.home { background: linear-gradient(135deg, #0f1a10, #102018); }
+.serve-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.05) 60%); }
+.serve-card-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 2.5rem; }
+.serve-card-icon { font-size: 2.2rem; margin-bottom: 0.8rem; }
+.serve-card-label { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+.serve-card-title { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: white; margin-bottom: 0.8rem; line-height: 1.1; }
+.serve-card-text { font-size: 0.8rem; font-weight: 300; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 1.2rem; }
+.serve-card-link { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: gap 0.3s; }
+.serve-card:hover .serve-card-link { gap: 1rem; }
+.serve-card-link::after { content: '→'; }
 
-    .contact { padding: 7rem 4rem; text-align: center; background: var(--cream); position: relative; }
-    .contact::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 5rem; background: var(--border); }
-    .contact-sub { font-size: 0.85rem; font-weight: 300; color: var(--mid); max-width: 420px; margin: 1.5rem auto 3rem; line-height: 1.9; }
-    .contact-info { display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); }
-    .contact-item-label { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
-    .contact-item-value { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--dark); }
+/* BRANDS */
+.brands-section { background: var(--cream); }
+.brands-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; flex-wrap: wrap; gap: 2rem; }
+.brands-grid-full { display: grid; grid-template-columns: repeat(5,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.brand-card { background: var(--cream); padding: 2.5rem 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transition: all 0.3s; cursor: pointer; min-height: 200px; }
+.brand-card:hover { background: white; }
+.brand-card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; letter-spacing: 0.1em; color: var(--dark); margin-bottom: 0.4rem; }
+.brand-card-origin { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+.brand-card-desc { font-size: 0.75rem; font-weight: 300; color: var(--mid); line-height: 1.7; }
 
-    footer { padding: 2rem 4rem; background: var(--dark); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; letter-spacing: 0.25em; color: rgba(249,245,240,0.5); }
-    .footer-copy { font-size: 0.65rem; letter-spacing: 0.1em; color: rgba(249,245,240,0.3); }
+/* PRODUCTS */
+.products-section { background: white; }
+.products-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1.5rem; }
+.filter-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.filter-btn { padding: 0.45rem 1.2rem; font-family: 'Jost',sans-serif; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; background: transparent; border: 1px solid var(--border); color: var(--mid); cursor: pointer; transition: all 0.3s; }
+.filter-btn.active, .filter-btn:hover { background: var(--gold); border-color: var(--gold); color: white; }
+.products-count { font-size: 0.75rem; color: var(--gray); margin-bottom: 2rem; }
+.products-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem; }
+.product-card { background: var(--cream); overflow: hidden; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
+.product-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+.product-card-img { aspect-ratio: 1/1; overflow: hidden; background: #ede9e3; display: flex; align-items: center; justify-content: center; }
+.product-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+.product-card:hover .product-card-img img { transform: scale(1.06); }
+.product-card-img .no-img { font-size: 2.5rem; }
+.product-card-body { padding: 1.2rem; }
+.product-card-brand { font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+.product-card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 400; color: var(--dark); margin-bottom: 0.3rem; line-height: 1.3; }
+.product-card-cat { font-size: 0.68rem; font-weight: 300; color: var(--gray); }
+.product-card[style*="display: none"] { display: none !important; }
 
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+/* COVERAGE */
+.coverage { background: var(--dark); color: white; }
+.coverage-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.coverage-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.15; margin-bottom: 1.5rem; color: white; }
+.coverage-title em { font-style: italic; color: var(--gold); }
+.coverage-text { font-size: 0.85rem; font-weight: 300; line-height: 2; color: rgba(255,255,255,0.55); margin-bottom: 1.8rem; }
+.coverage-cities { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.city-tag { padding: 0.35rem 0.9rem; border: 1px solid rgba(184,149,106,0.25); font-size: 0.68rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.55); }
+.coverage-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+.cov-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--gold); line-height: 1; }
+.cov-stat-label { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-top: 0.3rem; }
 
-    @media (max-width: 900px) {
-      nav { padding: 1.2rem 1.5rem; }
-      .nav-links { display: none; }
-      .hero { padding: 8rem 1.5rem 5rem; }
-      .hero-deco { display: none; }
-      .brands { padding: 3rem 1.5rem; }
-      .brands-grid { gap: 2.5rem; }
-      .products { padding: 5rem 1.5rem; }
-      .about { grid-template-columns: 1fr; padding: 5rem 1.5rem; gap: 3rem; }
-      .about-image { order: -1; }
-      .contact { padding: 5rem 1.5rem; }
-      footer { padding: 1.5rem; }
-    }
+/* WHOLESALE */
+.wholesale { background: var(--cream); }
+.wholesale-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.wholesale-img { aspect-ratio: 4/5; overflow: hidden; position: relative; }
+.wholesale-img img { width: 100%; height: 100%; object-fit: cover; }
+.wholesale-img::after { content: ''; position: absolute; inset: 0; border: 1px solid var(--border); transform: translate(12px,12px); pointer-events: none; }
+.wholesale-features { display: flex; flex-direction: column; gap: 1.8rem; margin-top: 2.5rem; }
+.wholesale-feature { display: flex; gap: 1.2rem; align-items: flex-start; }
+.wf-icon { width: 42px; height: 42px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+.wf-title { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dark); margin-bottom: 0.25rem; }
+.wf-text { font-size: 0.78rem; font-weight: 300; color: var(--mid); line-height: 1.7; }
+
+/* CONTACT */
+.contact-section { background: white; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 3.5rem; }
+.contact-info-block { display: flex; flex-direction: column; gap: 2rem; }
+.contact-item-label { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+.contact-item-value { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--dark); }
+.contact-item-value a { color: var(--dark); text-decoration: none; transition: color 0.3s; }
+.contact-item-value a:hover { color: var(--gold); }
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-input, .form-select, .form-textarea { width: 100%; padding: 0.9rem 1.1rem; border: 1px solid var(--border); background: var(--cream); font-family: 'Jost',sans-serif; font-size: 0.8rem; font-weight: 300; color: var(--dark); outline: none; transition: border-color 0.3s; appearance: none; }
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--gold); background: white; }
+.form-textarea { height: 110px; resize: none; }
+
+/* FOOTER */
+footer { background: var(--dark); padding: 5rem 4rem 2rem; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3.5rem; margin-bottom: 4rem; }
+.footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; letter-spacing: 0.2em; color: white; margin-bottom: 0.3rem; }
+.footer-brand-tag { font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.footer-slogan { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; font-style: italic; color: rgba(255,255,255,0.35); margin-bottom: 1.2rem; }
+.footer-desc { font-size: 0.78rem; font-weight: 300; line-height: 1.9; color: rgba(255,255,255,0.35); max-width: 260px; }
+.footer-col-title { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.3rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-links a { font-size: 0.78rem; font-weight: 300; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.3s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-bottom { padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-copy { font-size: 0.62rem; color: rgba(255,255,255,0.22); letter-spacing: 0.05em; }
+
+/* MOBILE NAV */
+.mobile-nav { position: fixed; top: 0; right: -100%; width: 80%; max-width: 320px; height: 100vh; background: white; z-index: 300; padding: 5rem 2rem 2rem; transition: right 0.4s; display: flex; flex-direction: column; gap: 1.2rem; box-shadow: -4px 0 40px rgba(0,0,0,0.12); }
+.mobile-nav.open { right: 0; }
+.mobile-nav a { font-size: 1rem; font-family: 'Cormorant Garamond', serif; color: var(--dark); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 0.8rem; }
+.mobile-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 250; opacity: 0; pointer-events: none; transition: opacity 0.4s; }
+.mobile-overlay.open { opacity: 1; pointer-events: all; }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+@keyframes bounce { 0%,100% { transform:translateX(-50%) translateY(0); } 50% { transform:translateX(-50%) translateY(-8px); } }
+@keyframes ticker { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+.reveal { opacity:0; transform:translateY(25px); transition:opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width:1200px) { .products-grid { grid-template-columns:repeat(3,1fr); } }
+@media (max-width:1024px) { .brands-grid-full { grid-template-columns:repeat(3,1fr); } .footer-top { grid-template-columns:1fr 1fr; } }
+@media (max-width:768px) {
+  nav { padding:0 1.5rem; }
+  .nav-links, .lang-switch { display:none; }
+  .nav-mobile-btn { display:flex; }
+  section { padding:4rem 1.5rem; }
+  .hero-content { padding:0 1.5rem; }
+  .hero-img { width:100%; opacity:0.12; }
+  .serve-grid { grid-template-columns:1fr; }
+  .brands-grid-full { grid-template-columns:repeat(2,1fr); }
+  .products-grid { grid-template-columns:repeat(2,1fr); }
+  .coverage-inner, .wholesale-inner, .contact-grid { grid-template-columns:1fr; gap:3rem; }
+  .wholesale-img { display:none; }
+  .form-row { grid-template-columns:1fr; }
+  .footer-top { grid-template-columns:1fr; gap:2rem; }
+}
+@media (max-width:480px) { .products-grid { grid-template-columns:1fr; } }
+```
+
   </style>
 </head>
-<body>
+<body class="lang-en">
 
-  <nav>
-    <div class="nav-brand-wrap">
-      <a href="#" class="nav-logo">SEDOR</a>
-      <div class="nav-tagline">Mama's First Choice</div>
-    </div>
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileNav()"></div>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#serve"><span data-en>Our Clients</span><span data-al>Klientët</span></a>
+  <a href="#brands"><span data-en>Brands</span><span data-al>Brendet</span></a>
+  <a href="#products"><span data-en>Products</span><span data-al>Produktet</span></a>
+  <a href="#coverage"><span data-en>Albania</span><span data-al>Shqipëria</span></a>
+  <a href="#wholesale"><span data-en>Wholesale</span><span data-al>Shumicë</span></a>
+  <a href="#contact"><span data-en>Contact</span><span data-al>Kontakt</span></a>
+</div>
+
+<nav id="mainNav">
+  <a href="#" class="nav-logo-wrap">
+    <div class="nav-logo">SEDOR</div>
+    <div class="nav-tagline">Mama's First Choice</div>
+  </a>
+  <div class="nav-right">
     <ul class="nav-links">
-      <li><a href="#products">Products</a></li>
-      <li><a href="#brands">Brands</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#serve"><span data-en>Clients</span><span data-al>Klientët</span></a></li>
+      <li><a href="#brands"><span data-en>Brands</span><span data-al>Brendet</span></a></li>
+      <li><a href="#products"><span data-en>Products</span><span data-al>Produktet</span></a></li>
+      <li><a href="#coverage"><span data-en>Albania</span><span data-al>Shqipëria</span></a></li>
+      <li><a href="#wholesale"><span data-en>Wholesale</span><span data-al>Shumicë</span></a></li>
+      <li><a href="#contact"><span data-en>Contact</span><span data-al>Kontakt</span></a></li>
     </ul>
-  </nav>
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('al')">AL</button>
+    </div>
+    <button class="nav-mobile-btn" onclick="openMobileNav()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
 
-  <section class="hero">
-    <div class="hero-content">
-      <p class="hero-eyebrow">Premium Kitchenware</p>
-      <h1 class="hero-title">SEDOR</h1>
-      <p class="hero-title-sub">Mama's First Choice</p>
-      <p class="hero-sub">
-        Your home for premium cookware and kitchen essentials. Quality tools, trusted brands — because every meal deserves the best.
-      </p>
-      <a href="#products" class="btn-primary">Explore Products</a>
-      <a href="#contact" class="btn-outline">Get in Touch</a>
-    </div>
-    <div class="hero-deco">
-      <img src="IMG_4736.jpeg" alt="SEDOR Cookware" onerror="this.style.display='none'"/>
-      <div class="hero-deco-overlay"></div>
-    </div>
-  </section>
+<!-- HERO -->
 
-  <section class="brands" id="brands">
-    <p class="brands-label">Also Available From</p>
-    <div class="brands-grid">
-      <div class="brand-item">O.M.S. Collection</div>
-      <div class="brand-item">LAVA</div>
-      <div class="brand-item">bambum</div>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-img"><img src="IMG_4736.jpeg" alt="SEDOR" onerror="this.style.display='none'"/></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span data-en>Premium Kitchenware · Albania</span><span data-al>Pajisje Kuzhine Premium · Shqipëri</span></div>
+    <h1 class="hero-title">
+      <strong>SEDOR</strong>
+      <span data-en>Where Every Kitchen<br/>Finds Its Heart</span>
+      <span data-al>Ku Çdo Kuzhinë<br/>Gjen Zemrën e Saj</span>
+    </h1>
+    <div class="hero-slogan">
+      <span data-en>"From our hands to your table — quality that lasts a lifetime."</span>
+      <span data-al>"Nga duart tona në tryezën tuaj — cilësi që zgjat gjatë gjithë jetës."</span>
     </div>
-  </section>
+    <p class="hero-subtitle">
+      <span data-en>Albania's leading wholesale distributor of premium cookware, serveware and glassware. Serving homes, hotels, restaurants and cafes nationwide.</span>
+      <span data-al>Distributorit kryesor me shumicë në Shqipëri të enëve të gatimit, serviseve dhe qelqeve premium. Duke shërbyer shtëpi, hotele, restorante dhe kafene në të gjithë vendin.</span>
+    </p>
+    <div class="hero-ctas">
+      <a href="#products" class="btn btn-gold"><span data-en>Explore 200+ Products</span><span data-al>Shiko 200+ Produkte</span></a>
+      <a href="#contact" class="btn btn-outline-white"><span data-en>Wholesale Inquiry</span><span data-al>Kërkesë Shumice</span></a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span data-en>Scroll</span><span data-al>Poshtë</span></div>
+</section>
 
-  <section class="products" id="products">
-    <div class="section-header">
-      <p class="section-eyebrow">Our Products</p>
-      <h2 class="section-title">Crafted for the <em>Modern Kitchen</em></h2>
-    </div>
-    <div class="products-grid">
-      <div class="product-card">
-        <img src="IMG_4736.jpeg" alt="Granite Cookware" onerror="this.style.background='#c9b99a'"/>
-        <div class="product-card-info">
-          <div class="product-card-brand">SEDOR</div>
-          <div class="product-card-name">Granite Non-Stick Set</div>
-        </div>
-      </div>
-      <div class="product-card">
-        <img src="IMG_4741.jpeg" alt="Double Pan" onerror="this.style.background='#b8a08a'"/>
-        <div class="product-card-info">
-          <div class="product-card-brand">O.M.S. Collection</div>
-          <div class="product-card-name">Double Grill Pan</div>
-        </div>
-      </div>
-      <div class="product-card">
-        <img src="IMG_4740.jpeg" alt="Bundt Mold" onerror="this.style.background='#c4a882'"/>
-        <div class="product-card-info">
-          <div class="product-card-brand">O.M.S. Collection</div>
-          <div class="product-card-name">Gold Bundt Mold</div>
-        </div>
-      </div>
-      <div class="product-card">
-        <img src="IMG_4737.jpeg" alt="Bamboo Board" onerror="this.style.background='#d4c0a0'"/>
-        <div class="product-card-info">
-          <div class="product-card-brand">bambum</div>
-          <div class="product-card-name">Bamboo Serving Board</div>
-        </div>
-      </div>
-      <div class="product-card">
-        <img src="IMG_4738.jpeg" alt="Sauce Bowls" onerror="this.style.background='#bfaa8e'"/>
-        <div class="product-card-info">
-          <div class="product-card-brand">bambum</div>
-          <div class="product-card-name">Mini Bowl Set</div>
-        </div>
-      </div>
-      <div class="product-card">
-        <img src="IMG_4739.jpeg" alt="Grill Pan" onerror="this.style.background='#a89070'"/>
-        <div class="product-card-info">
-          <div class="product-card-brand">LAVA</div>
-          <div class="product-card-name">Cast Grill Pan</div>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- TICKER -->
 
-  <section class="about" id="about">
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">SEDOR</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">O.M.S. COLLECTION</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">LAVA CAST IRON</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">BAMBUM NATURAL</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">OCEAN GLASS THAILAND</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">HORECA & HOME</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">200+ PRODUCTS</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">ALL ALBANIA</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">SEDOR</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">O.M.S. COLLECTION</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">LAVA CAST IRON</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">BAMBUM NATURAL</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">OCEAN GLASS THAILAND</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">HORECA & HOME</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">200+ PRODUCTS</span><span class="ticker-dot">·</span>
+    <span class="ticker-item">ALL ALBANIA</span><span class="ticker-dot">·</span>
+  </div>
+</div>
+
+<!-- SLOGAN BAND -->
+
+<div class="slogan-band reveal">
+  <div class="slogan-main">
+    <span data-en><em>"The Heart of Every Albanian Kitchen"</em> — 5 world-class brands, 200+ products, one trusted destination.</span>
+    <span data-al><em>"Zemra e Çdo Kuzhine Shqiptare"</em> — 5 brende me klasë botërore, 200+ produkte, një destinacion i besuar.</span>
+  </div>
+  <div class="slogan-sub">
+    <span data-en>SEDOR · Tirana, Albania · Since Day One</span>
+    <span data-al>SEDOR · Tiranë, Shqipëri · Që nga Fillimi</span>
+  </div>
+</div>
+
+<!-- WHO WE SERVE -->
+
+<section class="serve" id="serve">
+  <div class="reveal">
+    <div class="section-label"><span data-en>Who We Serve</span><span data-al>Kë Shërbejmë</span></div>
+    <h2 class="section-title"><span data-en>Solutions for Every <em>Kitchen</em></span><span data-al>Zgjidhje për Çdo <em>Kuzhinë</em></span></h2>
+  </div>
+  <div class="serve-grid reveal">
+    <div class="serve-card">
+      <div class="serve-card-bg horeca"></div>
+      <div class="serve-card-overlay"></div>
+      <div class="serve-card-content">
+        <div class="serve-card-icon">🍽️</div>
+        <div class="serve-card-label">HoReCa</div>
+        <div class="serve-card-title"><span data-en>Hotels, Restaurants<br/>& Cafes</span><span data-al>Hotele, Restorante<br/>& Kafene</span></div>
+        <div class="serve-card-text"><span data-en>Professional-grade cookware and glassware for the hospitality industry. Bulk pricing, reliable supply and premium quality for your business.</span><span data-al>Enë gatimi dhe qelq profesional për industrinë e mikpritjes. Çmime me shumicë dhe cilësi premium për biznesin tuaj.</span></div>
+        <a href="#contact" class="serve-card-link"><span data-en>Request Wholesale Pricing</span><span data-al>Kërko Çmim Shumice</span></a>
+      </div>
+    </div>
+    <div class="serve-card">
+      <div class="serve-card-bg home"></div>
+      <div class="serve-card-overlay"></div>
+      <div class="serve-card-content">
+        <div class="serve-card-icon">🏠</div>
+        <div class="serve-card-label"><span data-en>Home</span><span data-al>Shtëpi</span></div>
+        <div class="serve-card-title"><span data-en>For the Home<br/>Cook</span><span data-al>Për Kuzhinën<br/>e Shtëpisë</span></div>
+        <div class="serve-card-text"><span data-en>Premium cookware, beautiful serveware and elegant glassware to elevate every meal at home. Quality that lasts a lifetime.</span><span data-al>Enë gatimi premium dhe qelq elegant për të ngritur çdo vakt në shtëpi. Cilësi që zgjat gjatë gjithë jetës.</span></div>
+        <a href="#products" class="serve-card-link"><span data-en>Explore Home Collection</span><span data-al>Shiko Koleksionin</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+
+<section class="brands-section" id="brands">
+  <div class="brands-header reveal">
     <div>
-      <h2 class="about-title">Quality You Can<br/><em>Trust Every Day</em></h2>
-      <p class="about-text">
-        SEDOR is your trusted destination for premium kitchenware in Tirana, Albania. We carry the brands that matter — built for real home cooks who care about quality, durability, and style.
-      </p>
-      <p class="about-text">
-        From O.M.S. Collection's innovative non-stick cookware to bambum's natural bamboo serveware and LAVA's cast iron — every product is handpicked with care for your kitchen.
-      </p>
-      <div class="about-stats">
-        <div>
-          <div class="stat-number">4</div>
-          <div class="stat-label">Premium Brands</div>
-        </div>
-        <div>
-          <div class="stat-number">50+</div>
-          <div class="stat-label">Products</div>
-        </div>
-        <div>
-          <div class="stat-number">100%</div>
-          <div class="stat-label">Quality Assured</div>
-        </div>
-      </div>
+      <div class="section-label"><span data-en>Our Brands</span><span data-al>Brendet Tona</span></div>
+      <h2 class="section-title"><span data-en>5 World-Class Brands,<br/><em>One Destination</em></span><span data-al>5 Brende me Klasë Botërore,<br/><em>Një Destinacion</em></span></h2>
     </div>
-    <div class="about-image">
-      <img src="IMG_4736.jpeg" alt="About SEDOR" onerror="this.style.background='#2e2420'"/>
-    </div>
-  </section>
+    <p class="section-intro"><span data-en>Authorized distributor for the world's most trusted kitchenware brands in Albania.</span><span data-al>Distributor i autorizuar i brendeve më të besueshme të enëve të kuzhinës në Shqipëri.</span></p>
+  </div>
+  <div class="brands-grid-full reveal">
+    <div class="brand-card"><div class="brand-card-name">SEDOR</div><div class="brand-card-origin"><span data-en>Our Brand · Albania</span><span data-al>Brendi Ynë · Shqipëri</span></div><div class="brand-card-desc"><span data-en>Mama's First Choice. Premium cookware trusted by Albanian families and businesses.</span><span data-al>Zgjedhja e Parë e Nënës. Enë gatimi premium të besuara nga familjet dhe bizneset shqiptare.</span></div></div>
+    <div class="brand-card"><div class="brand-card-name">O.M.S.</div><div class="brand-card-origin"><span data-en>Turkey · Since 1976</span><span data-al>Turqi · Që nga 1976</span></div><div class="brand-card-desc"><span data-en>The Pioneer of Innovation. Granite non-stick, cast and premium cookware sets.</span><span data-al>Pionieri i Inovacionit. Sete enësh gatimi granit, gize dhe premium.</span></div></div>
+    <div class="brand-card"><div class="brand-card-name">LAVA</div><div class="brand-card-origin"><span data-en>Turkey · Cast Iron</span><span data-al>Turqi · Gize</span></div><div class="brand-card-desc"><span data-en>Premium cast iron cookware. Timeless quality for professional and home kitchens.</span><span data-al>Enë gatimi premium gize. Cilësi e përjetshme për kuzhinat profesionale dhe shtëpiake.</span></div></div>
+    <div class="brand-card"><div class="brand-card-name">bambum</div><div class="brand-card-origin"><span data-en>Natural · Antibacterial</span><span data-al>Natyrale · Antibakteriale</span></div><div class="brand-card-desc"><span data-en>Original bamboo serveware. Natural, elegant, eco-friendly and antibacterial.</span><span data-al>Serviset origjinale bambuje. Natyrale, elegante, miqësore me mjedisin dhe antibakteriale.</span></div></div>
+    <div class="brand-card"><div class="brand-card-name">OCEAN</div><div class="brand-card-origin"><span data-en>Thailand · Glassware</span><span data-al>Tailandë · Qelq</span></div><div class="brand-card-desc"><span data-en>World-class glassware from Thailand. Wine, water, cocktail glasses and more.</span><span data-al>Qelq me klasë botërore nga Tailanda. Gota vere, uji, koktej dhe më shumë.</span></div></div>
+  </div>
+</section>
 
-  <section class="contact" id="contact">
-    <p class="section-eyebrow">Get in Touch</p>
-    <h2 class="section-title">Ready to <em>Order?</em></h2>
-    <p class="contact-sub">Contact us for product inquiries, orders, or wholesale pricing. We'd love to hear from you.</p>
-    <a href="mailto:sedoralbania@gmail.com" class="btn-primary">Send a Message</a>
-    <div class="contact-info">
-      <div>
-        <div class="contact-item-label">Email</div>
-        <div class="contact-item-value">sedoralbania@gmail.com</div>
-      </div>
-      <div>
-        <div class="contact-item-label">Phone</div>
-        <div class="contact-item-value">+355 69 603 3413</div>
-      </div>
-      <div>
-        <div class="contact-item-label">Location</div>
-        <div class="contact-item-value">Tirana, Albania</div>
+<!-- PRODUCTS -->
+
+<section class="products-section" id="products">
+  <div class="products-header reveal">
+    <div>
+      <div class="section-label"><span data-en>Our Products</span><span data-al>Produktet Tona</span></div>
+      <h2 class="section-title"><span data-en>200+ Products for Every <em>Kitchen</em></span><span data-al>200+ Produkte për Çdo <em>Kuzhinë</em></span></h2>
+    </div>
+  </div>
+  <div class="filter-bar reveal" id="filterBar"></div>
+  <div class="products-count reveal" id="productsCount"></div>
+  <div class="products-grid reveal" id="productsGrid"></div>
+</section>
+
+<!-- COVERAGE -->
+
+<section class="coverage" id="coverage">
+  <div class="coverage-inner">
+    <div class="reveal">
+      <div class="section-label" style="color:rgba(255,255,255,0.3);"><span data-en>Our Reach</span><span data-al>Mbulimi Ynë</span></div>
+      <h2 class="coverage-title"><span data-en>Delivering Across<br/><em>All of Albania</em></span><span data-al>Dërgesa në të Gjithë<br/><em>Shqipërinë</em></span></h2>
+      <p class="coverage-text"><span data-en>SEDOR is a nationwide wholesale distributor. We supply premium kitchenware to businesses and homes in every major city and region of Albania. Fast delivery, reliable service.</span><span data-al>SEDOR është distributor me shumicë në nivel kombëtar. Furnizojmë enë kuzhine premium për biznese dhe shtëpi në çdo qytet dhe rajon kryesor të Shqipërisë. Dërgesa e shpejtë, shërbim i besueshëm.</span></p>
+      <div class="coverage-cities">
+        <span class="city-tag">Tiranë</span><span class="city-tag">Durrës</span><span class="city-tag">Vlorë</span><span class="city-tag">Shkodër</span><span class="city-tag">Elbasan</span><span class="city-tag">Fier</span><span class="city-tag">Korçë</span><span class="city-tag">Berat</span><span class="city-tag">Lushnjë</span><span class="city-tag">Gjirokastër</span><span class="city-tag">Sarandë</span><span class="city-tag">Pogradec</span><span class="city-tag">Kavajë</span><span class="city-tag">Lezhë</span><span class="city-tag">+ <span data-en>More</span><span data-al>Më</span></span>
       </div>
     </div>
-  </section>
+    <div class="coverage-stats reveal">
+      <div><div class="cov-stat-num">5</div><div class="cov-stat-label"><span data-en>Brands</span><span data-al>Brende</span></div></div>
+      <div><div class="cov-stat-num">200+</div><div class="cov-stat-label"><span data-en>Products</span><span data-al>Produkte</span></div></div>
+      <div><div class="cov-stat-num">🇦🇱</div><div class="cov-stat-label" style="font-size:0.55rem;"><span data-en>All Albania</span><span data-al>Gjithë Shqipëria</span></div></div>
+    </div>
+  </div>
+</section>
 
-  <footer>
-    <div class="footer-logo">SEDOR</div>
+<!-- WHOLESALE -->
+
+<section class="wholesale" id="wholesale">
+  <div class="wholesale-inner">
+    <div class="wholesale-img reveal"><img src="IMG_4736.jpeg" alt="Wholesale" onerror="this.style.background='#ede9e3'"/></div>
+    <div class="reveal">
+      <div class="section-label"><span data-en>Wholesale · Panic-Shumicë</span><span data-al>Shumicë · Panic-Shumicë</span></div>
+      <h2 class="section-title"><span data-en>Your Trusted <em>Wholesale Partner</em></span><span data-al>Partneri Juaj i <em>Besuar Shumice</em></span></h2>
+      <p class="section-intro"><span data-en>Competitive wholesale pricing for HoReCa businesses, retailers and resellers across all of Albania.</span><span data-al>Çmime konkurruese me shumicë për bizneset HoReCa, shitësit me pakicë dhe rishitësit në të gjithë Shqipërinë.</span></p>
+      <div class="wholesale-features">
+        <div class="wholesale-feature"><div class="wf-icon">🏷️</div><div><div class="wf-title"><span data-en>Competitive Pricing</span><span data-al>Çmime Konkurruese</span></div><div class="wf-text"><span data-en>Best wholesale rates for bulk orders with flexible payment terms.</span><span data-al>Tarifat më të mira me shumicë për porosi të mëdha me kushte pagese fleksibël.</span></div></div></div>
+        <div class="wholesale-feature"><div class="wf-icon">🚚</div><div><div class="wf-title"><span data-en>Nationwide Delivery</span><span data-al>Dërgesa Kombëtare</span></div><div class="wf-text"><span data-en>Fast and reliable delivery to any location across Albania.</span><span data-al>Dërgesa e shpejtë dhe e besueshme në çdo vendndodhje në Shqipëri.</span></div></div></div>
+        <div class="wholesale-feature"><div class="wf-icon">🤝</div><div><div class="wf-title"><span data-en>Dedicated Support</span><span data-al>Mbështetje e Dedikuar</span></div><div class="wf-text"><span data-en>Personal account manager for all wholesale clients and businesses.</span><span data-al>Menaxher personal i llogarisë për të gjithë klientët me shumicë dhe bizneset.</span></div></div></div>
+        <div class="wholesale-feature"><div class="wf-icon">📦</div><div><div class="wf-title"><span data-en>Large Stock</span><span data-al>Stok i Madh</span></div><div class="wf-text"><span data-en>200+ products always in stock and ready for immediate dispatch.</span><span data-al>200+ produkte gjithmonë në stok dhe gati për dërgim të menjëhershëm.</span></div></div></div>
+      </div>
+      <div style="margin-top:2.5rem;"><a href="#contact" class="btn btn-gold"><span data-en>Become a Partner</span><span data-al>Bëhu Partner</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact-section" id="contact">
+  <div class="reveal">
+    <div class="section-label"><span data-en>Get in Touch</span><span data-al>Na Kontaktoni</span></div>
+    <h2 class="section-title"><span data-en>Ready to <em>Order?</em></span><span data-al>Gati për të <em>Porositur?</em></span></h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info-block reveal">
+      <div><div class="contact-item-label">Email</div><div class="contact-item-value"><a href="mailto:sedoralbania@gmail.com">sedoralbania@gmail.com</a></div></div>
+      <div><div class="contact-item-label"><span data-en>Phone / WhatsApp</span><span data-al>Telefon / WhatsApp</span></div><div class="contact-item-value"><a href="tel:+355696033413">+355 69 603 3413</a></div></div>
+      <div><div class="contact-item-label"><span data-en>Location</span><span data-al>Vendndodhja</span></div><div class="contact-item-value">Tirana, Albania</div></div>
+      <div><div class="contact-item-label"><span data-en>We Serve</span><span data-al>Shërbejmë</span></div><div class="contact-item-value" style="font-size:0.92rem;"><span data-en>HoReCa & Home · All Albania</span><span data-al>HoReCa & Shtëpi · Gjithë Shqipëria</span></div></div>
+    </div>
+    <div class="reveal">
+      <div class="contact-form">
+        <div class="form-row"><input class="form-input" type="text" placeholder="Name / Emri"/><input class="form-input" type="text" placeholder="Phone / Telefon"/></div>
+        <input class="form-input" type="email" placeholder="Email"/>
+        <select class="form-select"><option value="">I am a... / Jam një...</option><option>Hotel / Restaurant / Cafe (HoReCa)</option><option>Home Customer / Klient Shtëpie</option><option>Reseller / Rishitës</option><option>Other / Tjetër</option></select>
+        <textarea class="form-textarea" placeholder="Message / Mesazhi..."></textarea>
+        <button class="btn btn-gold" style="width:fit-content;"><span data-en>Send Message</span><span data-al>Dërgo Mesazhin</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">SEDOR</div>
+      <div class="footer-brand-tag">Mama's First Choice</div>
+      <div class="footer-slogan"><span data-en>"The Heart of Every Albanian Kitchen"</span><span data-al>"Zemra e Çdo Kuzhine Shqiptare"</span></div>
+      <p class="footer-desc"><span data-en>Albania's trusted wholesale distributor of premium kitchenware. Serving HoReCa and homes nationwide.</span><span data-al>Distributorit i besuar me shumicë i Shqipërisë për enë kuzhine premium. Duke shërbyer HoReCa dhe shtëpitë në nivel kombëtar.</span></p>
+    </div>
+    <div>
+      <div class="footer-col-title"><span data-en>Brands</span><span data-al>Brendet</span></div>
+      <ul class="footer-links"><li><a href="#">SEDOR</a></li><li><a href="#">O.M.S. Collection</a></li><li><a href="#">LAVA</a></li><li><a href="#">bambum</a></li><li><a href="#">Ocean Glass</a></li></ul>
+    </div>
+    <div>
+      <div class="footer-col-title"><span data-en>Services</span><span data-al>Shërbimet</span></div>
+      <ul class="footer-links"><li><a href="#serve">HoReCa</a></li><li><a href="#serve"><span data-en>Home</span><span data-al>Shtëpi</span></a></li><li><a href="#wholesale"><span data-en>Wholesale</span><span data-al>Shumicë</span></a></li><li><a href="#coverage"><span data-en>Delivery</span><span data-al>Dërgesa</span></a></li></ul>
+    </div>
+    <div>
+      <div class="footer-col-title"><span data-en>Contact</span><span data-al>Kontakt</span></div>
+      <ul class="footer-links"><li><a href="mailto:sedoralbania@gmail.com">sedoralbania@gmail.com</a></li><li><a href="tel:+355696033413">+355 69 603 3413</a></li><li><a href="#">Tirana, Albania</a></li></ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
     <div class="footer-copy">© 2024 SEDOR · Mama's First Choice · Tirana, Albania</div>
-  </footer>
+    <div class="footer-copy"><span data-en>Premium Kitchenware Distributor · All Albania</span><span data-al>Distributor i Enëve të Kuzhinës · Gjithë Shqipëria</span></div>
+  </div>
+</footer>
+
+<script>
+// ── LANGUAGE ──
+function setLang(l) {
+  document.body.className = 'lang-' + l;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${l}')"]`).classList.add('active');
+  if(typeof renderProducts === 'function') renderProducts(currentFilter);
+}
+
+// ── SCROLL NAV ──
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+
+// ── REVEAL ──
+const observer = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), {threshold:0.08});
+document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+
+// ── MOBILE NAV ──
+function openMobileNav() { document.getElementById('mobileNav').classList.add('open'); document.getElementById('mobileOverlay').classList.add('open'); }
+function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); document.getElementById('mobileOverlay').classList.remove('open'); }
+
+// ── PRODUCTS DATA ──
+const products = [
+  // SEDOR
+  {brand:'SEDOR',cat:'cookware',nameEN:'Granite Non-Stick Pot 20cm',nameAL:'Tenxhere Granit Jo-Ngjitëse 20cm',icon:'🍲'},
+  {brand:'SEDOR',cat:'cookware',nameEN:'Granite Non-Stick Pot 24cm',nameAL:'Tenxhere Granit Jo-Ngjitëse 24cm',icon:'🍲'},
+  {brand:'SEDOR',cat:'cookware',nameEN:'Granite Non-Stick Pot 28cm',nameAL:'Tenxhere Granit Jo-Ngjitëse 28cm',icon:'🍲'},
+  {brand:'SEDOR',cat:'cookware',nameEN:'Granite Frying Pan 24cm',nameAL:'Tigan Granit 24cm',icon:'🍳'},
+  {brand:'SEDOR',cat:'cookware',nameEN:'Granite Frying Pan 28cm',nameAL:'Tigan Granit 28cm',icon:'🍳'},
+  {brand:'SEDOR',cat:'cookware',nameEN:'Granite Frying Pan 32cm',nameAL:'Tigan Granit 32cm',icon:'🍳'},
+  {brand:'SEDOR',cat:'cookware',nameEN:'5-Piece Granite Cookware Set',nameAL:'Set 5 Copë Granit',icon:'🥘'},
+  {brand:'SEDOR',cat:'cookware',nameEN:'7-Piece Granite Cookware Set',nameAL:'Set 7 Copë Granit',icon:'🥘'},
+  {brand:'SEDOR',cat:'cookware',nameEN:'Granite Casserole 26cm',nameAL:'Kazan Granit 26cm',icon:'🍲'},
+  {brand:'SEDOR',cat:'cookware',nameEN:'Granite Casserole 30cm',nameAL:'Kazan Granit 30cm',icon:'🍲'},
+  {brand:'SEDOR',cat:'cookware',nameEN:'Non-Stick Sauté Pan 28cm',nameAL:'Tigan Sauté Jo-Ngjitës 28cm',icon:'🍳'},
+  {brand:'SEDOR',cat:'cookware',nameEN:'Granite Stock Pot 32cm',nameAL:'Tenxhere e Madhe Granit 32cm',icon:'🍲'},
+  // O.M.S. COLLECTION
+  {brand:'OMS',cat:'cookware',nameEN:'Double Grill Pan Square',nameAL:'Tigan Dysh Katror Grilë',icon:'🥩'},
+  {brand:'OMS',cat:'cookware',nameEN:'Granite Cookware Set 9pcs Gold',nameAL:'Set Granit 9 Copë Ar',icon:'✨'},
+  {brand:'OMS',cat:'cookware',nameEN:'Granite Cookware Set 9pcs Black',nameAL:'Set Granit 9 Copë Zi',icon:'🖤'},
+  {brand:'OMS',cat:'bakeware',nameEN:'Gold Bundt Cake Mold',nameAL:'Kallëp Kek Bundt Ar',icon:'🍩'},
+  {brand:'OMS',cat:'bakeware',nameEN:'Non-Stick Cake Pan Round 26cm',nameAL:'Kallëp Tortë Jo-Ngjitës Rrumbullak 26cm',icon:'🎂'},
+  {brand:'OMS',cat:'bakeware',nameEN:'Non-Stick Loaf Pan',nameAL:'Kallëp Bukë Jo-Ngjitës',icon:'🍞'},
+  {brand:'OMS',cat:'bakeware',nameEN:'Muffin Tray 12-Cup',nameAL:'Tabaka Muffin 12 Gropë',icon:'🧁'},
+  {brand:'OMS',cat:'bakeware',nameEN:'Granite Roasting Pan 35cm',nameAL:'Tavë Pjekjeje Granit 35cm',icon:'🥩'},
+  {brand:'OMS',cat:'bakeware',nameEN:'Granite Roasting Pan 40cm',nameAL:'Tavë Pjekjeje Granit 40cm',icon:'🥩'},
+  {brand:'OMS',cat:'bakeware',nameEN:'Springform Cake Pan 24cm',nameAL:'Kallëp Tortë me Krehare 24cm',icon:'🎂'},
+  {brand:'OMS',cat:'bakeware',nameEN:'Granite Pizza Pan 32cm',nameAL:'Tabaka Picë Granit 32cm',icon:'🍕'},
+  {brand:'OMS',cat:'bakeware',nameEN:'Granite Baking Tray 40cm',nameAL:'Tabaka Pjekjeje Granit 40cm',icon:'🍪'},
+  {brand:'OMS',cat:'cookware',nameEN:'Casserole with Lid 24cm',nameAL:'Kazan me Kapak 24cm',icon:'🍲'},
+  {brand:'OMS',cat:'cookware',nameEN:'Casserole with Lid 28cm',nameAL:'Kazan me Kapak 28cm',icon:'🍲'},
+  {brand:'OMS',cat:'cookware',nameEN:'Casserole with Lid 32cm',nameAL:'Kazan me Kapak 32cm',icon:'🍲'},
+  {brand:'OMS',cat:'cookware',nameEN:'Grill Pan Square 26cm',nameAL:'Tigan Grilë Katror 26cm',icon:'🥩'},
+  {brand:'OMS',cat:'cookware',nameEN:'Grill Pan Square 30cm',nameAL:'Tigan Grilë Katror 30cm',icon:'🥩'},
+  {brand:'OMS',cat:'cookware',nameEN:'Wok Pan 32cm',nameAL:'Tigan Wok 32cm',icon:'🥢'},
+  {brand:'OMS',cat:'cookware',nameEN:'Wok Pan 36cm',nameAL:'Tigan Wok 36cm',icon:'🥢'},
+  {brand:'OMS',cat:'cookware',nameEN:'Steamer Pot Set',nameAL:'Set Tenxhere me Avull',icon:'♨️'},
+  {brand:'OMS',cat:'cookware',nameEN:'Pressure Cooker 6L',nameAL:'Tenxhere Presioni 6L',icon:'⚡'},
+  {brand:'OMS',cat:'cookware',nameEN:'Pressure Cooker 8L',nameAL:'Tenxhere Presioni 8L',icon:'⚡'},
+  {brand:'OMS',cat:'cookware',nameEN:'Non-Stick Deep Fry Pan 28cm',nameAL:'Tigan i Thellë Jo-Ngjitës 28cm',icon:'🍟'},
+  {brand:'OMS',cat:'cookware',nameEN:'Egg Pan 4-Cup',nameAL:'Tigan Vezësh 4 Gropë',icon:'🍳'},
+  {brand:'OMS',cat:'cookware',nameEN:'Crepe Pan 28cm',nameAL:'Tigan Krep 28cm',icon:'🥞'},
+  {brand:'OMS',cat:'cookware',nameEN:'Milk Pot 14cm',nameAL:'Tenxhere Qumështi 14cm',icon:'🥛'},
+  {brand:'OMS',cat:'cookware',nameEN:'Sauce Pot 16cm',nameAL:'Tenxhere Salce 16cm',icon:'🫕'},
+  {brand:'OMS',cat:'cookware',nameEN:'Sauce Pot 18cm',nameAL:'Tenxhere Salce 18cm',icon:'🫕'},
+  {brand:'OMS',cat:'cookware',nameEN:'Multi-Purpose Pot with Strainer',nameAL:'Tenxhere Shumëpërdorimshe me Kullues',icon:'🍝'},
+  {brand:'OMS',cat:'cookware',nameEN:'Induction Frying Pan 24cm',nameAL:'Tigan Induktiv 24cm',icon:'🍳'},
+  {brand:'OMS',cat:'cookware',nameEN:'Induction Frying Pan 28cm',nameAL:'Tigan Induktiv 28cm',icon:'🍳'},
+  {brand:'OMS',cat:'cookware',nameEN:'Complete Kitchen Set 15pcs',nameAL:'Set i Plotë Kuzhine 15 Copë',icon:'🥘'},
+  {brand:'OMS',cat:'cookware',nameEN:'Mini Casserole 18cm',nameAL:'Kazan Mini 18cm',icon:'🍲'},
+  // LAVA
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Grill Pan 26cm',nameAL:'Tigan Grilë Gize 26cm',icon:'🥩'},
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Grill Pan 30cm',nameAL:'Tigan Grilë Gize 30cm',icon:'🥩'},
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Frying Pan 20cm',nameAL:'Tigan Gize 20cm',icon:'🍳'},
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Frying Pan 24cm',nameAL:'Tigan Gize 24cm',icon:'🍳'},
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Frying Pan 28cm',nameAL:'Tigan Gize 28cm',icon:'🍳'},
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Dutch Oven 24cm',nameAL:'Kazan Gize Dutch 24cm',icon:'🍲'},
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Dutch Oven 28cm',nameAL:'Kazan Gize Dutch 28cm',icon:'🍲'},
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Casserole Oval 29cm',nameAL:'Kazan Gize Oval 29cm',icon:'🍲'},
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Wok 30cm',nameAL:'Wok Gize 30cm',icon:'🥢'},
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Bread Baker',nameAL:'Kallëp Buke Gize',icon:'🍞'},
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Sauce Pot 14cm',nameAL:'Tenxhere Salce Gize 14cm',icon:'🫕'},
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Sauce Pot 16cm',nameAL:'Tenxhere Salce Gize 16cm',icon:'🫕'},
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Grill Pan Square 24cm',nameAL:'Tigan Grilë Katror Gize 24cm',icon:'🥩'},
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Skillet with Handle',nameAL:'Tigan Gize me Dorezë',icon:'🍳'},
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Crepe Pan 26cm',nameAL:'Tigan Krep Gize 26cm',icon:'🥞'},
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Tagine 26cm',nameAL:'Tagine Gize 26cm',icon:'🫕'},
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Mini Skillet 12cm',nameAL:'Tigan Mini Gize 12cm',icon:'🍳'},
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Deep Pan 26cm',nameAL:'Tigan i Thellë Gize 26cm',icon:'🍳'},
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Roasting Pan 32cm',nameAL:'Tavë Pjekjeje Gize 32cm',icon:'🥩'},
+  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Double Grill Pan',nameAL:'Tigan Grilë Dysh Gize',icon:'🥩'},
+  // BAMBUM
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Cutting Board Large',nameAL:'Dërrasë Prerëse Bambuje e Madhe',icon:'🔪'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Cutting Board Medium',nameAL:'Dërrasë Prerëse Bambuje Mesatare',icon:'🔪'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Cutting Board Small',nameAL:'Dërrasë Prerëse Bambuje e Vogël',icon:'🔪'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Serving Board 3-Section',nameAL:'Tabaka Servimi Bambuje 3 Ndarje',icon:'🥗'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Serving Bowl Large',nameAL:'Tas Servimi Bambuje i Madh',icon:'🥣'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Serving Bowl Medium',nameAL:'Tas Servimi Bambuje Mesatar',icon:'🥣'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Mini Bowl Set 6pcs',nameAL:'Set Tasash Mini Bambuje 6 Copë',icon:'🥣'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Sauce Bowl Set 4pcs',nameAL:'Set Tasash Salce Bambuje 4 Copë',icon:'🥣'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Salad Tongs',nameAL:'Pinça Salcë Bambuje',icon:'🥗'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Spatula Set 3pcs',nameAL:'Set Spatulash Bambuje 3 Copë',icon:'🍴'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Spoon Set 5pcs',nameAL:'Set Lugësh Bambuje 5 Copë',icon:'🥄'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Bread Board',nameAL:'Dërrasë Buke Bambuje',icon:'🍞'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Cheese Board with Knife',nameAL:'Tabaka Djathi Bambuje me Thikë',icon:'🧀'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Breakfast Tray',nameAL:'Tabaka Mëngjes Bambuje',icon:'☕'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Fruit Bowl',nameAL:'Tas Frutash Bambuje',icon:'🍎'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Round Serving Plate',nameAL:'Pjatë Servimi Rrumbullake Bambuje',icon:'🍽️'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Lazy Susan Rotating Tray',nameAL:'Tabaka Rrotulluese Bambuje',icon:'🔄'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Kitchen Utensil Holder',nameAL:'Mbajtëse Takëmesh Bambuje',icon:'🍴'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Paper Towel Holder',nameAL:'Mbajtëse Letrash Bambuje',icon:'🧻'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Napkin Rings Set 4pcs',nameAL:'Set Unazash Pecetash Bambuje 4 Copë',icon:'🍽️'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Condiment Set',nameAL:'Set Erëzash Bambuje',icon:'🧂'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Tea Tray',nameAL:'Tabaka Çaji Bambuje',icon:'🍵'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Sushi Board',nameAL:'Tabaka Sushi Bambuje',icon:'🍱'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Steak Board with Groove',nameAL:'Dërrasë Biftek Bambuje me Kanal',icon:'🥩'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Wine Rack 6-Bottle',nameAL:'Raft Vere Bambuje 6 Shishe',icon:'🍷'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Spice Rack',nameAL:'Raft Erëzash Bambuje',icon:'🌶️'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Placemat Set 4pcs',nameAL:'Set Sfungjeri Tryeze Bambuje 4 Copë',icon:'🍽️'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Antipasto Board',nameAL:'Tabaka Antipasto Bambuje',icon:'🫒'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Cocktail Muddler',nameAL:'Goditëse Koktejesh Bambuje',icon:'🍹'},
+  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Coaster Set 6pcs',nameAL:'Set Nëntasash Bambuje 6 Copë',icon:'☕'},
+  // OCEAN GLASS
+  {brand:'OCEAN',cat:'glassware',nameEN:'Red Wine Glass 350ml Set 6',nameAL:'Gotë Vere të Kuqe 350ml Set 6',icon:'🍷'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'White Wine Glass 280ml Set 6',nameAL:'Gotë Vere të Bardhë 280ml Set 6',icon:'🥂'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Champagne Flute 180ml Set 6',nameAL:'Gotë Shampanje 180ml Set 6',icon:'🥂'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Bordeaux Wine Glass 550ml Set 6',nameAL:'Gotë Vere Bordeaux 550ml Set 6',icon:'🍷'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Burgundy Wine Glass 600ml Set 6',nameAL:'Gotë Vere Burgundy 600ml Set 6',icon:'🍷'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Water Glass 300ml Set 6',nameAL:'Gotë Uji 300ml Set 6',icon:'💧'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Water Glass 400ml Set 6',nameAL:'Gotë Uji 400ml Set 6',icon:'💧'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Juice Glass 250ml Set 6',nameAL:'Gotë Lëngu 250ml Set 6',icon:'🧃'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Juice Glass 350ml Set 6',nameAL:'Gotë Lëngu 350ml Set 6',icon:'🧃'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Highball Glass 350ml Set 6',nameAL:'Gotë Highball 350ml Set 6',icon:'🥃'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Highball Glass 470ml Set 6',nameAL:'Gotë Highball 470ml Set 6',icon:'🥃'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Rocks Glass 290ml Set 6',nameAL:'Gotë Whisky Rocks 290ml Set 6',icon:'🥃'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Old Fashioned Glass 310ml Set 6',nameAL:'Gotë Old Fashioned 310ml Set 6',icon:'🥃'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Cocktail Martini Glass 150ml Set 6',nameAL:'Gotë Koktej Martini 150ml Set 6',icon:'🍸'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Margarita Glass 340ml Set 6',nameAL:'Gotë Margarita 340ml Set 6',icon:'🍹'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Beer Mug 500ml Set 4',nameAL:'Gotë Birre 500ml Set 4',icon:'🍺'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Beer Pilsner Glass 380ml Set 6',nameAL:'Gotë Birre Pilsner 380ml Set 6',icon:'🍺'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Shot Glass 60ml Set 6',nameAL:'Gotë Shot 60ml Set 6',icon:'🥃'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Shot Glass 90ml Set 6',nameAL:'Gotë Shot 90ml Set 6',icon:'🥃'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Cappuccino Glass 200ml Set 6',nameAL:'Gotë Kapuçino 200ml Set 6',icon:'☕'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Latte Glass 350ml Set 6',nameAL:'Gotë Latte 350ml Set 6',icon:'☕'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Irish Coffee Glass 260ml Set 6',nameAL:'Gotë Irish Coffee 260ml Set 6',icon:'☕'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Espresso Glass 90ml Set 6',nameAL:'Gotë Espresso 90ml Set 6',icon:'☕'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Mixing Glass 750ml',nameAL:'Gotë Miksuese 750ml',icon:'🍹'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Decanter 750ml',nameAL:'Karafë Vere 750ml',icon:'🍷'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Decanter 1L',nameAL:'Karafë Vere 1L',icon:'🍷'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Water Carafe 1.5L',nameAL:'Karafë Uji 1.5L',icon:'💧'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Whisky Tumbler Set 6',nameAL:'Set Gotësh Whisky 6 Copë',icon:'🥃'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Stemless Wine Glass 450ml Set 6',nameAL:'Gotë Vere Pa Këmbë 450ml Set 6',icon:'🍷'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Long Drink Glass 420ml Set 6',nameAL:'Gotë Long Drink 420ml Set 6',icon:'🥤'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Cocktail Coupe Glass 210ml Set 6',nameAL:'Gotë Koktej Coupe 210ml Set 6',icon:'🥂'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Hurricane Glass 450ml Set 4',nameAL:'Gotë Hurricane 450ml Set 4',icon:'🍹'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Mojito Glass 400ml Set 6',nameAL:'Gotë Mojito 400ml Set 6',icon:'🍹'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Pint Glass 570ml Set 4',nameAL:'Gotë Pint 570ml Set 4',icon:'🍺'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Goblet Water Glass 370ml Set 6',nameAL:'Gotë Uji Goblet 370ml Set 6',icon:'💧'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Double Wall Espresso 80ml Set 2',nameAL:'Gotë Espresso Mur i Dyfishtë 80ml Set 2',icon:'☕'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Double Wall Latte 350ml Set 2',nameAL:'Gotë Latte Mur i Dyfishtë 350ml Set 2',icon:'☕'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Brandy Snifter 320ml Set 6',nameAL:'Gotë Brandy Snifter 320ml Set 6',icon:'🍷'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Prosecco Flute 200ml Set 6',nameAL:'Gotë Prosecco 200ml Set 6',icon:'🥂'},
+  {brand:'OCEAN',cat:'glassware',nameEN:'Complete Bar Glass Set 48pcs',nameAL:'Set i Plotë Gotash Bar 48 Copë',icon:'🍸'},
+];
+
+const filters = [
+  {key:'all', labelEN:'All Products', labelAL:'Të Gjitha'},
+  {key:'cookware', labelEN:'Cookware', labelAL:'Enë Gatimi'},
+  {key:'bakeware', labelEN:'Bakeware', labelAL:'Pjekje'},
+  {key:'serveware', labelEN:'Serveware', labelAL:'Serviset'},
+  {key:'glassware', labelEN:'Glassware', labelAL:'Qelq'},
+];
+
+let currentFilter = 'all';
+const lang = () => document.body.classList.contains('lang-al') ? 'al' : 'en';
+
+function renderFilters() {
+  const bar = document.getElementById('filterBar');
+  bar.innerHTML = filters.map(f =>
+    `<button class="filter-btn${f.key === currentFilter ? ' active' : ''}" onclick="applyFilter('${f.key}')">
+      <span data-en>${f.labelEN}</span><span data-al>${f.labelAL}</span>
+    </button>`
+  ).join('');
+  // Re-apply lang visibility
+  const l = lang();
+  bar.querySelectorAll('[data-en]').forEach(el => el.style.display = l === 'en' ? '' : 'none');
+  bar.querySelectorAll('[data-al]').forEach(el => el.style.display = l === 'al' ? '' : 'none');
+}
+
+function renderProducts(filter) {
+  currentFilter = filter;
+  const grid = document.getElementById('productsGrid');
+  const filtered = filter === 'all' ? products : products.filter(p => p.cat === filter);
+  const l = lang();
+  grid.innerHTML = filtered.map(p =>
+    `<div class="product-card">
+      <div class="product-card-img"><div class="no-img">${p.icon}</div></div>
+      <div class="product-card-body">
+        <div class="product-card-brand">${p.brand}</div>
+        <div class="product-card-name">${l === 'al' ? p.nameAL : p.nameEN}</div>
+        <div class="product-card-cat">${getCatLabel(p.cat, l)}</div>
+      </div>
+    </div>`
+  ).join('');
+  updateCount();
+  renderFilters();
+}
+
+function getCatLabel(cat, l) {
+  const labels = {
+    cookware: {en:'Cookware · HoReCa & Home', al:'Enë Gatimi · HoReCa & Shtëpi'},
+    bakeware: {en:'Bakeware · Home', al:'Pjekje · Shtëpi'},
+    serveware: {en:'Serveware · HoReCa & Home', al:'Serviset · HoReCa & Shtëpi'},
+    glassware: {en:'Glassware · HoReCa & Home', al:'Qelq · HoReCa & Shtëpi'},
+  };
+  return labels[cat][l];
+}
+
+function applyFilter(key) {
+  renderProducts(key);
+}
+
+function updateCount() {
+  const filtered = currentFilter === 'all' ? products : products.filter(p => p.cat === currentFilter);
+  const l = lang();
+  document.getElementById('productsCount').textContent =
+    l === 'al' ? `Duke shfaqur ${filtered.length} produkte` : `Showing ${filtered.length} products`;
+}
+
+// Init
+setLang('en');
+renderProducts('all');
+</script>
 
 </body>
 </html>
-
-
-
