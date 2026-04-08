@@ -23,11 +23,8 @@
     body { font-family: 'Jost', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; }
 
 ```
-[data-en], [data-al] { display: none !important; }
-body.lang-en [data-en] { display: block !important; }
-body.lang-en span[data-en], body.lang-en a[data-en], body.lang-en div[data-en] { display: inline !important; }
-body.lang-al [data-al] { display: block !important; }
-body.lang-al span[data-al], body.lang-al a[data-al], body.lang-al div[data-al] { display: inline !important; }
+.lang-en, .lang-al { display: none; }
+.lang-inline-en, .lang-inline-al { display: none; }
 
 /* NAV */
 nav {
@@ -500,10 +497,25 @@ footer { background: var(--dark); padding: 5rem 4rem 2rem; }
 
 // ── LANGUAGE ──
 function setLang(l) {
-document.body.className = ‘lang-’ + l;
+// Hide all lang elements
+document.querySelectorAll(’[data-en], [data-al]’).forEach(el => {
+el.style.display = ‘none’;
+});
+// Show selected lang
+const attr = l === ‘en’ ? ‘data-en’ : ‘data-al’;
+document.querySelectorAll(’[’ + attr + ‘]’).forEach(el => {
+const tag = el.tagName.toLowerCase();
+if (tag === ‘span’ || tag === ‘a’ || tag === ‘button’) {
+el.style.display = ‘inline’;
+} else {
+el.style.display = ‘block’;
+}
+});
+// Update buttons
 document.querySelectorAll(’.lang-btn’).forEach(b => b.classList.remove(‘active’));
-document.querySelector(`.lang-btn[onclick="setLang('${l}')"]`).classList.add(‘active’);
-if(typeof renderProducts === ‘function’) renderProducts(currentFilter);
+const btn = document.querySelector(`.lang-btn[onclick="setLang('${l}')"]`);
+if (btn) btn.classList.add(‘active’);
+if (typeof renderProducts === ‘function’) renderProducts(currentFilter);
 }
 
 // ── SCROLL NAV ──
@@ -707,4 +719,20 @@ return labels[cat][l];
 }
 
 function applyFilter(key) {
-renderProducts(
+renderProducts(key);
+}
+
+function updateCount() {
+const filtered = currentFilter === ‘all’ ? products : products.filter(p => p.cat === currentFilter);
+const l = document.body.classList.contains(‘lang-al’) ? ‘al’ : ‘en’;
+const el = document.getElementById(‘productsCount’);
+if(el) el.textContent = l === ‘al’ ? `Duke shfaqur ${filtered.length} produkte` : `Showing ${filtered.length} products`;
+}
+
+// Init
+renderProducts(‘all’);
+setLang(‘en’);
+</script>
+
+</body>
+</html>
