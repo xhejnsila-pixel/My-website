@@ -23,11 +23,11 @@
     body { font-family: 'Jost', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; }
 
 ```
-[data-en], [data-al] { display: none; }
-body.lang-en [data-en] { display: block; }
-body.lang-en span[data-en], body.lang-en a[data-en], body.lang-en div[data-en] { display: inline; }
-body.lang-al [data-al] { display: block; }
-body.lang-al span[data-al], body.lang-al a[data-al], body.lang-al div[data-al] { display: inline; }
+[data-en], [data-al] { display: none !important; }
+body.lang-en [data-en] { display: block !important; }
+body.lang-en span[data-en], body.lang-en a[data-en], body.lang-en div[data-en] { display: inline !important; }
+body.lang-al [data-al] { display: block !important; }
+body.lang-al span[data-al], body.lang-al a[data-al], body.lang-al div[data-al] { display: inline !important; }
 
 /* NAV */
 nav {
@@ -450,7 +450,7 @@ footer { background: var(--dark); padding: 5rem 4rem 2rem; }
   </div>
   <div class="contact-grid">
     <div class="contact-info-block reveal">
-      <div><div class="contact-item-label">Email</div><div class="contact-item-value"><a href="mailto:sedoralbania@gmail.com">sedoralbania@gmail.com</a></div></div>
+      <div><div class="contact-item-label">Email</div><div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#770412131805161b1516191e1637101a161e1b5914181a"><span class="__cf_email__" data-cfemail="572432333825363b3536393e3617303a363e3b7934383a">[email&#160;protected]</span></a></div></div>
       <div><div class="contact-item-label"><span data-en>Phone / WhatsApp</span><span data-al>Telefon / WhatsApp</span></div><div class="contact-item-value"><a href="tel:+355696033413">+355 69 603 3413</a></div></div>
       <div><div class="contact-item-label"><span data-en>Location</span><span data-al>Vendndodhja</span></div><div class="contact-item-value">Tirana, Albania</div></div>
       <div><div class="contact-item-label"><span data-en>We Serve</span><span data-al>Shërbejmë</span></div><div class="contact-item-value" style="font-size:0.92rem;"><span data-en>HoReCa & Home · All Albania</span><span data-al>HoReCa & Shtëpi · Gjithë Shqipëria</span></div></div>
@@ -487,7 +487,7 @@ footer { background: var(--dark); padding: 5rem 4rem 2rem; }
     </div>
     <div>
       <div class="footer-col-title"><span data-en>Contact</span><span data-al>Kontakt</span></div>
-      <ul class="footer-links"><li><a href="mailto:sedoralbania@gmail.com">sedoralbania@gmail.com</a></li><li><a href="tel:+355696033413">+355 69 603 3413</a></li><li><a href="#">Tirana, Albania</a></li></ul>
+      <ul class="footer-links"><li><a href="/cdn-cgi/l/email-protection#5f2c3a3b302d3e333d3e31363e1f38323e3633713c3032"><span class="__cf_email__" data-cfemail="ef9c8a8b809d8e838d8e81868eaf88828e8683c18c8082">[email&#160;protected]</span></a></li><li><a href="tel:+355696033413">+355 69 603 3413</a></li><li><a href="#">Tirana, Albania</a></li></ul>
     </div>
   </div>
   <div class="footer-bottom">
@@ -496,239 +496,215 @@ footer { background: var(--dark); padding: 5rem 4rem 2rem; }
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
 // ── LANGUAGE ──
 function setLang(l) {
-  document.body.className = 'lang-' + l;
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector(`.lang-btn[onclick="setLang('${l}')"]`).classList.add('active');
-  if(typeof renderProducts === 'function') renderProducts(currentFilter);
+document.body.className = ‘lang-’ + l;
+document.querySelectorAll(’.lang-btn’).forEach(b => b.classList.remove(‘active’));
+document.querySelector(`.lang-btn[onclick="setLang('${l}')"]`).classList.add(‘active’);
+if(typeof renderProducts === ‘function’) renderProducts(currentFilter);
 }
 
 // ── SCROLL NAV ──
-const nav = document.getElementById('mainNav');
-window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+const nav = document.getElementById(‘mainNav’);
+window.addEventListener(‘scroll’, () => nav.classList.toggle(‘scrolled’, window.scrollY > 50));
 
 // ── REVEAL ──
-const observer = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), {threshold:0.08});
-document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+const observer = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add(‘visible’); }), {threshold:0.08});
+document.querySelectorAll(’.reveal’).forEach(r => observer.observe(r));
 
 // ── MOBILE NAV ──
-function openMobileNav() { document.getElementById('mobileNav').classList.add('open'); document.getElementById('mobileOverlay').classList.add('open'); }
-function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); document.getElementById('mobileOverlay').classList.remove('open'); }
+function openMobileNav() { document.getElementById(‘mobileNav’).classList.add(‘open’); document.getElementById(‘mobileOverlay’).classList.add(‘open’); }
+function closeMobileNav() { document.getElementById(‘mobileNav’).classList.remove(‘open’); document.getElementById(‘mobileOverlay’).classList.remove(‘open’); }
 
 // ── PRODUCTS DATA ──
 const products = [
-  // SEDOR
-  {brand:'SEDOR',cat:'cookware',nameEN:'Granite Non-Stick Pot 20cm',nameAL:'Tenxhere Granit Jo-Ngjitëse 20cm',icon:'🍲'},
-  {brand:'SEDOR',cat:'cookware',nameEN:'Granite Non-Stick Pot 24cm',nameAL:'Tenxhere Granit Jo-Ngjitëse 24cm',icon:'🍲'},
-  {brand:'SEDOR',cat:'cookware',nameEN:'Granite Non-Stick Pot 28cm',nameAL:'Tenxhere Granit Jo-Ngjitëse 28cm',icon:'🍲'},
-  {brand:'SEDOR',cat:'cookware',nameEN:'Granite Frying Pan 24cm',nameAL:'Tigan Granit 24cm',icon:'🍳'},
-  {brand:'SEDOR',cat:'cookware',nameEN:'Granite Frying Pan 28cm',nameAL:'Tigan Granit 28cm',icon:'🍳'},
-  {brand:'SEDOR',cat:'cookware',nameEN:'Granite Frying Pan 32cm',nameAL:'Tigan Granit 32cm',icon:'🍳'},
-  {brand:'SEDOR',cat:'cookware',nameEN:'5-Piece Granite Cookware Set',nameAL:'Set 5 Copë Granit',icon:'🥘'},
-  {brand:'SEDOR',cat:'cookware',nameEN:'7-Piece Granite Cookware Set',nameAL:'Set 7 Copë Granit',icon:'🥘'},
-  {brand:'SEDOR',cat:'cookware',nameEN:'Granite Casserole 26cm',nameAL:'Kazan Granit 26cm',icon:'🍲'},
-  {brand:'SEDOR',cat:'cookware',nameEN:'Granite Casserole 30cm',nameAL:'Kazan Granit 30cm',icon:'🍲'},
-  {brand:'SEDOR',cat:'cookware',nameEN:'Non-Stick Sauté Pan 28cm',nameAL:'Tigan Sauté Jo-Ngjitës 28cm',icon:'🍳'},
-  {brand:'SEDOR',cat:'cookware',nameEN:'Granite Stock Pot 32cm',nameAL:'Tenxhere e Madhe Granit 32cm',icon:'🍲'},
-  // O.M.S. COLLECTION
-  {brand:'OMS',cat:'cookware',nameEN:'Double Grill Pan Square',nameAL:'Tigan Dysh Katror Grilë',icon:'🥩'},
-  {brand:'OMS',cat:'cookware',nameEN:'Granite Cookware Set 9pcs Gold',nameAL:'Set Granit 9 Copë Ar',icon:'✨'},
-  {brand:'OMS',cat:'cookware',nameEN:'Granite Cookware Set 9pcs Black',nameAL:'Set Granit 9 Copë Zi',icon:'🖤'},
-  {brand:'OMS',cat:'bakeware',nameEN:'Gold Bundt Cake Mold',nameAL:'Kallëp Kek Bundt Ar',icon:'🍩'},
-  {brand:'OMS',cat:'bakeware',nameEN:'Non-Stick Cake Pan Round 26cm',nameAL:'Kallëp Tortë Jo-Ngjitës Rrumbullak 26cm',icon:'🎂'},
-  {brand:'OMS',cat:'bakeware',nameEN:'Non-Stick Loaf Pan',nameAL:'Kallëp Bukë Jo-Ngjitës',icon:'🍞'},
-  {brand:'OMS',cat:'bakeware',nameEN:'Muffin Tray 12-Cup',nameAL:'Tabaka Muffin 12 Gropë',icon:'🧁'},
-  {brand:'OMS',cat:'bakeware',nameEN:'Granite Roasting Pan 35cm',nameAL:'Tavë Pjekjeje Granit 35cm',icon:'🥩'},
-  {brand:'OMS',cat:'bakeware',nameEN:'Granite Roasting Pan 40cm',nameAL:'Tavë Pjekjeje Granit 40cm',icon:'🥩'},
-  {brand:'OMS',cat:'bakeware',nameEN:'Springform Cake Pan 24cm',nameAL:'Kallëp Tortë me Krehare 24cm',icon:'🎂'},
-  {brand:'OMS',cat:'bakeware',nameEN:'Granite Pizza Pan 32cm',nameAL:'Tabaka Picë Granit 32cm',icon:'🍕'},
-  {brand:'OMS',cat:'bakeware',nameEN:'Granite Baking Tray 40cm',nameAL:'Tabaka Pjekjeje Granit 40cm',icon:'🍪'},
-  {brand:'OMS',cat:'cookware',nameEN:'Casserole with Lid 24cm',nameAL:'Kazan me Kapak 24cm',icon:'🍲'},
-  {brand:'OMS',cat:'cookware',nameEN:'Casserole with Lid 28cm',nameAL:'Kazan me Kapak 28cm',icon:'🍲'},
-  {brand:'OMS',cat:'cookware',nameEN:'Casserole with Lid 32cm',nameAL:'Kazan me Kapak 32cm',icon:'🍲'},
-  {brand:'OMS',cat:'cookware',nameEN:'Grill Pan Square 26cm',nameAL:'Tigan Grilë Katror 26cm',icon:'🥩'},
-  {brand:'OMS',cat:'cookware',nameEN:'Grill Pan Square 30cm',nameAL:'Tigan Grilë Katror 30cm',icon:'🥩'},
-  {brand:'OMS',cat:'cookware',nameEN:'Wok Pan 32cm',nameAL:'Tigan Wok 32cm',icon:'🥢'},
-  {brand:'OMS',cat:'cookware',nameEN:'Wok Pan 36cm',nameAL:'Tigan Wok 36cm',icon:'🥢'},
-  {brand:'OMS',cat:'cookware',nameEN:'Steamer Pot Set',nameAL:'Set Tenxhere me Avull',icon:'♨️'},
-  {brand:'OMS',cat:'cookware',nameEN:'Pressure Cooker 6L',nameAL:'Tenxhere Presioni 6L',icon:'⚡'},
-  {brand:'OMS',cat:'cookware',nameEN:'Pressure Cooker 8L',nameAL:'Tenxhere Presioni 8L',icon:'⚡'},
-  {brand:'OMS',cat:'cookware',nameEN:'Non-Stick Deep Fry Pan 28cm',nameAL:'Tigan i Thellë Jo-Ngjitës 28cm',icon:'🍟'},
-  {brand:'OMS',cat:'cookware',nameEN:'Egg Pan 4-Cup',nameAL:'Tigan Vezësh 4 Gropë',icon:'🍳'},
-  {brand:'OMS',cat:'cookware',nameEN:'Crepe Pan 28cm',nameAL:'Tigan Krep 28cm',icon:'🥞'},
-  {brand:'OMS',cat:'cookware',nameEN:'Milk Pot 14cm',nameAL:'Tenxhere Qumështi 14cm',icon:'🥛'},
-  {brand:'OMS',cat:'cookware',nameEN:'Sauce Pot 16cm',nameAL:'Tenxhere Salce 16cm',icon:'🫕'},
-  {brand:'OMS',cat:'cookware',nameEN:'Sauce Pot 18cm',nameAL:'Tenxhere Salce 18cm',icon:'🫕'},
-  {brand:'OMS',cat:'cookware',nameEN:'Multi-Purpose Pot with Strainer',nameAL:'Tenxhere Shumëpërdorimshe me Kullues',icon:'🍝'},
-  {brand:'OMS',cat:'cookware',nameEN:'Induction Frying Pan 24cm',nameAL:'Tigan Induktiv 24cm',icon:'🍳'},
-  {brand:'OMS',cat:'cookware',nameEN:'Induction Frying Pan 28cm',nameAL:'Tigan Induktiv 28cm',icon:'🍳'},
-  {brand:'OMS',cat:'cookware',nameEN:'Complete Kitchen Set 15pcs',nameAL:'Set i Plotë Kuzhine 15 Copë',icon:'🥘'},
-  {brand:'OMS',cat:'cookware',nameEN:'Mini Casserole 18cm',nameAL:'Kazan Mini 18cm',icon:'🍲'},
-  // LAVA
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Grill Pan 26cm',nameAL:'Tigan Grilë Gize 26cm',icon:'🥩'},
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Grill Pan 30cm',nameAL:'Tigan Grilë Gize 30cm',icon:'🥩'},
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Frying Pan 20cm',nameAL:'Tigan Gize 20cm',icon:'🍳'},
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Frying Pan 24cm',nameAL:'Tigan Gize 24cm',icon:'🍳'},
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Frying Pan 28cm',nameAL:'Tigan Gize 28cm',icon:'🍳'},
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Dutch Oven 24cm',nameAL:'Kazan Gize Dutch 24cm',icon:'🍲'},
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Dutch Oven 28cm',nameAL:'Kazan Gize Dutch 28cm',icon:'🍲'},
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Casserole Oval 29cm',nameAL:'Kazan Gize Oval 29cm',icon:'🍲'},
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Wok 30cm',nameAL:'Wok Gize 30cm',icon:'🥢'},
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Bread Baker',nameAL:'Kallëp Buke Gize',icon:'🍞'},
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Sauce Pot 14cm',nameAL:'Tenxhere Salce Gize 14cm',icon:'🫕'},
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Sauce Pot 16cm',nameAL:'Tenxhere Salce Gize 16cm',icon:'🫕'},
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Grill Pan Square 24cm',nameAL:'Tigan Grilë Katror Gize 24cm',icon:'🥩'},
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Skillet with Handle',nameAL:'Tigan Gize me Dorezë',icon:'🍳'},
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Crepe Pan 26cm',nameAL:'Tigan Krep Gize 26cm',icon:'🥞'},
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Tagine 26cm',nameAL:'Tagine Gize 26cm',icon:'🫕'},
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Mini Skillet 12cm',nameAL:'Tigan Mini Gize 12cm',icon:'🍳'},
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Deep Pan 26cm',nameAL:'Tigan i Thellë Gize 26cm',icon:'🍳'},
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Roasting Pan 32cm',nameAL:'Tavë Pjekjeje Gize 32cm',icon:'🥩'},
-  {brand:'LAVA',cat:'cookware',nameEN:'Cast Iron Double Grill Pan',nameAL:'Tigan Grilë Dysh Gize',icon:'🥩'},
-  // BAMBUM
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Cutting Board Large',nameAL:'Dërrasë Prerëse Bambuje e Madhe',icon:'🔪'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Cutting Board Medium',nameAL:'Dërrasë Prerëse Bambuje Mesatare',icon:'🔪'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Cutting Board Small',nameAL:'Dërrasë Prerëse Bambuje e Vogël',icon:'🔪'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Serving Board 3-Section',nameAL:'Tabaka Servimi Bambuje 3 Ndarje',icon:'🥗'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Serving Bowl Large',nameAL:'Tas Servimi Bambuje i Madh',icon:'🥣'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Serving Bowl Medium',nameAL:'Tas Servimi Bambuje Mesatar',icon:'🥣'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Mini Bowl Set 6pcs',nameAL:'Set Tasash Mini Bambuje 6 Copë',icon:'🥣'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Sauce Bowl Set 4pcs',nameAL:'Set Tasash Salce Bambuje 4 Copë',icon:'🥣'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Salad Tongs',nameAL:'Pinça Salcë Bambuje',icon:'🥗'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Spatula Set 3pcs',nameAL:'Set Spatulash Bambuje 3 Copë',icon:'🍴'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Spoon Set 5pcs',nameAL:'Set Lugësh Bambuje 5 Copë',icon:'🥄'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Bread Board',nameAL:'Dërrasë Buke Bambuje',icon:'🍞'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Cheese Board with Knife',nameAL:'Tabaka Djathi Bambuje me Thikë',icon:'🧀'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Breakfast Tray',nameAL:'Tabaka Mëngjes Bambuje',icon:'☕'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Fruit Bowl',nameAL:'Tas Frutash Bambuje',icon:'🍎'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Round Serving Plate',nameAL:'Pjatë Servimi Rrumbullake Bambuje',icon:'🍽️'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Lazy Susan Rotating Tray',nameAL:'Tabaka Rrotulluese Bambuje',icon:'🔄'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Kitchen Utensil Holder',nameAL:'Mbajtëse Takëmesh Bambuje',icon:'🍴'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Paper Towel Holder',nameAL:'Mbajtëse Letrash Bambuje',icon:'🧻'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Napkin Rings Set 4pcs',nameAL:'Set Unazash Pecetash Bambuje 4 Copë',icon:'🍽️'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Condiment Set',nameAL:'Set Erëzash Bambuje',icon:'🧂'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Tea Tray',nameAL:'Tabaka Çaji Bambuje',icon:'🍵'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Sushi Board',nameAL:'Tabaka Sushi Bambuje',icon:'🍱'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Steak Board with Groove',nameAL:'Dërrasë Biftek Bambuje me Kanal',icon:'🥩'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Wine Rack 6-Bottle',nameAL:'Raft Vere Bambuje 6 Shishe',icon:'🍷'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Spice Rack',nameAL:'Raft Erëzash Bambuje',icon:'🌶️'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Placemat Set 4pcs',nameAL:'Set Sfungjeri Tryeze Bambuje 4 Copë',icon:'🍽️'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Antipasto Board',nameAL:'Tabaka Antipasto Bambuje',icon:'🫒'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Cocktail Muddler',nameAL:'Goditëse Koktejesh Bambuje',icon:'🍹'},
-  {brand:'Bambum',cat:'serveware',nameEN:'Bamboo Coaster Set 6pcs',nameAL:'Set Nëntasash Bambuje 6 Copë',icon:'☕'},
-  // OCEAN GLASS
-  {brand:'OCEAN',cat:'glassware',nameEN:'Red Wine Glass 350ml Set 6',nameAL:'Gotë Vere të Kuqe 350ml Set 6',icon:'🍷'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'White Wine Glass 280ml Set 6',nameAL:'Gotë Vere të Bardhë 280ml Set 6',icon:'🥂'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Champagne Flute 180ml Set 6',nameAL:'Gotë Shampanje 180ml Set 6',icon:'🥂'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Bordeaux Wine Glass 550ml Set 6',nameAL:'Gotë Vere Bordeaux 550ml Set 6',icon:'🍷'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Burgundy Wine Glass 600ml Set 6',nameAL:'Gotë Vere Burgundy 600ml Set 6',icon:'🍷'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Water Glass 300ml Set 6',nameAL:'Gotë Uji 300ml Set 6',icon:'💧'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Water Glass 400ml Set 6',nameAL:'Gotë Uji 400ml Set 6',icon:'💧'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Juice Glass 250ml Set 6',nameAL:'Gotë Lëngu 250ml Set 6',icon:'🧃'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Juice Glass 350ml Set 6',nameAL:'Gotë Lëngu 350ml Set 6',icon:'🧃'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Highball Glass 350ml Set 6',nameAL:'Gotë Highball 350ml Set 6',icon:'🥃'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Highball Glass 470ml Set 6',nameAL:'Gotë Highball 470ml Set 6',icon:'🥃'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Rocks Glass 290ml Set 6',nameAL:'Gotë Whisky Rocks 290ml Set 6',icon:'🥃'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Old Fashioned Glass 310ml Set 6',nameAL:'Gotë Old Fashioned 310ml Set 6',icon:'🥃'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Cocktail Martini Glass 150ml Set 6',nameAL:'Gotë Koktej Martini 150ml Set 6',icon:'🍸'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Margarita Glass 340ml Set 6',nameAL:'Gotë Margarita 340ml Set 6',icon:'🍹'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Beer Mug 500ml Set 4',nameAL:'Gotë Birre 500ml Set 4',icon:'🍺'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Beer Pilsner Glass 380ml Set 6',nameAL:'Gotë Birre Pilsner 380ml Set 6',icon:'🍺'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Shot Glass 60ml Set 6',nameAL:'Gotë Shot 60ml Set 6',icon:'🥃'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Shot Glass 90ml Set 6',nameAL:'Gotë Shot 90ml Set 6',icon:'🥃'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Cappuccino Glass 200ml Set 6',nameAL:'Gotë Kapuçino 200ml Set 6',icon:'☕'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Latte Glass 350ml Set 6',nameAL:'Gotë Latte 350ml Set 6',icon:'☕'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Irish Coffee Glass 260ml Set 6',nameAL:'Gotë Irish Coffee 260ml Set 6',icon:'☕'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Espresso Glass 90ml Set 6',nameAL:'Gotë Espresso 90ml Set 6',icon:'☕'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Mixing Glass 750ml',nameAL:'Gotë Miksuese 750ml',icon:'🍹'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Decanter 750ml',nameAL:'Karafë Vere 750ml',icon:'🍷'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Decanter 1L',nameAL:'Karafë Vere 1L',icon:'🍷'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Water Carafe 1.5L',nameAL:'Karafë Uji 1.5L',icon:'💧'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Whisky Tumbler Set 6',nameAL:'Set Gotësh Whisky 6 Copë',icon:'🥃'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Stemless Wine Glass 450ml Set 6',nameAL:'Gotë Vere Pa Këmbë 450ml Set 6',icon:'🍷'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Long Drink Glass 420ml Set 6',nameAL:'Gotë Long Drink 420ml Set 6',icon:'🥤'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Cocktail Coupe Glass 210ml Set 6',nameAL:'Gotë Koktej Coupe 210ml Set 6',icon:'🥂'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Hurricane Glass 450ml Set 4',nameAL:'Gotë Hurricane 450ml Set 4',icon:'🍹'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Mojito Glass 400ml Set 6',nameAL:'Gotë Mojito 400ml Set 6',icon:'🍹'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Pint Glass 570ml Set 4',nameAL:'Gotë Pint 570ml Set 4',icon:'🍺'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Goblet Water Glass 370ml Set 6',nameAL:'Gotë Uji Goblet 370ml Set 6',icon:'💧'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Double Wall Espresso 80ml Set 2',nameAL:'Gotë Espresso Mur i Dyfishtë 80ml Set 2',icon:'☕'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Double Wall Latte 350ml Set 2',nameAL:'Gotë Latte Mur i Dyfishtë 350ml Set 2',icon:'☕'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Brandy Snifter 320ml Set 6',nameAL:'Gotë Brandy Snifter 320ml Set 6',icon:'🍷'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Prosecco Flute 200ml Set 6',nameAL:'Gotë Prosecco 200ml Set 6',icon:'🥂'},
-  {brand:'OCEAN',cat:'glassware',nameEN:'Complete Bar Glass Set 48pcs',nameAL:'Set i Plotë Gotash Bar 48 Copë',icon:'🍸'},
+// SEDOR
+{brand:‘SEDOR’,cat:‘cookware’,nameEN:‘Granite Non-Stick Pot 20cm’,nameAL:‘Tenxhere Granit Jo-Ngjitëse 20cm’,icon:‘🍲’},
+{brand:‘SEDOR’,cat:‘cookware’,nameEN:‘Granite Non-Stick Pot 24cm’,nameAL:‘Tenxhere Granit Jo-Ngjitëse 24cm’,icon:‘🍲’},
+{brand:‘SEDOR’,cat:‘cookware’,nameEN:‘Granite Non-Stick Pot 28cm’,nameAL:‘Tenxhere Granit Jo-Ngjitëse 28cm’,icon:‘🍲’},
+{brand:‘SEDOR’,cat:‘cookware’,nameEN:‘Granite Frying Pan 24cm’,nameAL:‘Tigan Granit 24cm’,icon:‘🍳’},
+{brand:‘SEDOR’,cat:‘cookware’,nameEN:‘Granite Frying Pan 28cm’,nameAL:‘Tigan Granit 28cm’,icon:‘🍳’},
+{brand:‘SEDOR’,cat:‘cookware’,nameEN:‘Granite Frying Pan 32cm’,nameAL:‘Tigan Granit 32cm’,icon:‘🍳’},
+{brand:‘SEDOR’,cat:‘cookware’,nameEN:‘5-Piece Granite Cookware Set’,nameAL:‘Set 5 Copë Granit’,icon:‘🥘’},
+{brand:‘SEDOR’,cat:‘cookware’,nameEN:‘7-Piece Granite Cookware Set’,nameAL:‘Set 7 Copë Granit’,icon:‘🥘’},
+{brand:‘SEDOR’,cat:‘cookware’,nameEN:‘Granite Casserole 26cm’,nameAL:‘Kazan Granit 26cm’,icon:‘🍲’},
+{brand:‘SEDOR’,cat:‘cookware’,nameEN:‘Granite Casserole 30cm’,nameAL:‘Kazan Granit 30cm’,icon:‘🍲’},
+{brand:‘SEDOR’,cat:‘cookware’,nameEN:‘Non-Stick Sauté Pan 28cm’,nameAL:‘Tigan Sauté Jo-Ngjitës 28cm’,icon:‘🍳’},
+{brand:‘SEDOR’,cat:‘cookware’,nameEN:‘Granite Stock Pot 32cm’,nameAL:‘Tenxhere e Madhe Granit 32cm’,icon:‘🍲’},
+// O.M.S. COLLECTION
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Double Grill Pan Square’,nameAL:‘Tigan Dysh Katror Grilë’,icon:‘🥩’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Granite Cookware Set 9pcs Gold’,nameAL:‘Set Granit 9 Copë Ar’,icon:‘✨’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Granite Cookware Set 9pcs Black’,nameAL:‘Set Granit 9 Copë Zi’,icon:‘🖤’},
+{brand:‘OMS’,cat:‘bakeware’,nameEN:‘Gold Bundt Cake Mold’,nameAL:‘Kallëp Kek Bundt Ar’,icon:‘🍩’},
+{brand:‘OMS’,cat:‘bakeware’,nameEN:‘Non-Stick Cake Pan Round 26cm’,nameAL:‘Kallëp Tortë Jo-Ngjitës Rrumbullak 26cm’,icon:‘🎂’},
+{brand:‘OMS’,cat:‘bakeware’,nameEN:‘Non-Stick Loaf Pan’,nameAL:‘Kallëp Bukë Jo-Ngjitës’,icon:‘🍞’},
+{brand:‘OMS’,cat:‘bakeware’,nameEN:‘Muffin Tray 12-Cup’,nameAL:‘Tabaka Muffin 12 Gropë’,icon:‘🧁’},
+{brand:‘OMS’,cat:‘bakeware’,nameEN:‘Granite Roasting Pan 35cm’,nameAL:‘Tavë Pjekjeje Granit 35cm’,icon:‘🥩’},
+{brand:‘OMS’,cat:‘bakeware’,nameEN:‘Granite Roasting Pan 40cm’,nameAL:‘Tavë Pjekjeje Granit 40cm’,icon:‘🥩’},
+{brand:‘OMS’,cat:‘bakeware’,nameEN:‘Springform Cake Pan 24cm’,nameAL:‘Kallëp Tortë me Krehare 24cm’,icon:‘🎂’},
+{brand:‘OMS’,cat:‘bakeware’,nameEN:‘Granite Pizza Pan 32cm’,nameAL:‘Tabaka Picë Granit 32cm’,icon:‘🍕’},
+{brand:‘OMS’,cat:‘bakeware’,nameEN:‘Granite Baking Tray 40cm’,nameAL:‘Tabaka Pjekjeje Granit 40cm’,icon:‘🍪’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Casserole with Lid 24cm’,nameAL:‘Kazan me Kapak 24cm’,icon:‘🍲’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Casserole with Lid 28cm’,nameAL:‘Kazan me Kapak 28cm’,icon:‘🍲’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Casserole with Lid 32cm’,nameAL:‘Kazan me Kapak 32cm’,icon:‘🍲’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Grill Pan Square 26cm’,nameAL:‘Tigan Grilë Katror 26cm’,icon:‘🥩’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Grill Pan Square 30cm’,nameAL:‘Tigan Grilë Katror 30cm’,icon:‘🥩’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Wok Pan 32cm’,nameAL:‘Tigan Wok 32cm’,icon:‘🥢’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Wok Pan 36cm’,nameAL:‘Tigan Wok 36cm’,icon:‘🥢’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Steamer Pot Set’,nameAL:‘Set Tenxhere me Avull’,icon:‘♨️’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Pressure Cooker 6L’,nameAL:‘Tenxhere Presioni 6L’,icon:‘⚡’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Pressure Cooker 8L’,nameAL:‘Tenxhere Presioni 8L’,icon:‘⚡’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Non-Stick Deep Fry Pan 28cm’,nameAL:‘Tigan i Thellë Jo-Ngjitës 28cm’,icon:‘🍟’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Egg Pan 4-Cup’,nameAL:‘Tigan Vezësh 4 Gropë’,icon:‘🍳’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Crepe Pan 28cm’,nameAL:‘Tigan Krep 28cm’,icon:‘🥞’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Milk Pot 14cm’,nameAL:‘Tenxhere Qumështi 14cm’,icon:‘🥛’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Sauce Pot 16cm’,nameAL:‘Tenxhere Salce 16cm’,icon:‘🫕’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Sauce Pot 18cm’,nameAL:‘Tenxhere Salce 18cm’,icon:‘🫕’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Multi-Purpose Pot with Strainer’,nameAL:‘Tenxhere Shumëpërdorimshe me Kullues’,icon:‘🍝’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Induction Frying Pan 24cm’,nameAL:‘Tigan Induktiv 24cm’,icon:‘🍳’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Induction Frying Pan 28cm’,nameAL:‘Tigan Induktiv 28cm’,icon:‘🍳’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Complete Kitchen Set 15pcs’,nameAL:‘Set i Plotë Kuzhine 15 Copë’,icon:‘🥘’},
+{brand:‘OMS’,cat:‘cookware’,nameEN:‘Mini Casserole 18cm’,nameAL:‘Kazan Mini 18cm’,icon:‘🍲’},
+// LAVA
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Grill Pan 26cm’,nameAL:‘Tigan Grilë Gize 26cm’,icon:‘🥩’},
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Grill Pan 30cm’,nameAL:‘Tigan Grilë Gize 30cm’,icon:‘🥩’},
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Frying Pan 20cm’,nameAL:‘Tigan Gize 20cm’,icon:‘🍳’},
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Frying Pan 24cm’,nameAL:‘Tigan Gize 24cm’,icon:‘🍳’},
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Frying Pan 28cm’,nameAL:‘Tigan Gize 28cm’,icon:‘🍳’},
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Dutch Oven 24cm’,nameAL:‘Kazan Gize Dutch 24cm’,icon:‘🍲’},
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Dutch Oven 28cm’,nameAL:‘Kazan Gize Dutch 28cm’,icon:‘🍲’},
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Casserole Oval 29cm’,nameAL:‘Kazan Gize Oval 29cm’,icon:‘🍲’},
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Wok 30cm’,nameAL:‘Wok Gize 30cm’,icon:‘🥢’},
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Bread Baker’,nameAL:‘Kallëp Buke Gize’,icon:‘🍞’},
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Sauce Pot 14cm’,nameAL:‘Tenxhere Salce Gize 14cm’,icon:‘🫕’},
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Sauce Pot 16cm’,nameAL:‘Tenxhere Salce Gize 16cm’,icon:‘🫕’},
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Grill Pan Square 24cm’,nameAL:‘Tigan Grilë Katror Gize 24cm’,icon:‘🥩’},
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Skillet with Handle’,nameAL:‘Tigan Gize me Dorezë’,icon:‘🍳’},
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Crepe Pan 26cm’,nameAL:‘Tigan Krep Gize 26cm’,icon:‘🥞’},
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Tagine 26cm’,nameAL:‘Tagine Gize 26cm’,icon:‘🫕’},
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Mini Skillet 12cm’,nameAL:‘Tigan Mini Gize 12cm’,icon:‘🍳’},
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Deep Pan 26cm’,nameAL:‘Tigan i Thellë Gize 26cm’,icon:‘🍳’},
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Roasting Pan 32cm’,nameAL:‘Tavë Pjekjeje Gize 32cm’,icon:‘🥩’},
+{brand:‘LAVA’,cat:‘cookware’,nameEN:‘Cast Iron Double Grill Pan’,nameAL:‘Tigan Grilë Dysh Gize’,icon:‘🥩’},
+// BAMBUM
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Cutting Board Large’,nameAL:‘Dërrasë Prerëse Bambuje e Madhe’,icon:‘🔪’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Cutting Board Medium’,nameAL:‘Dërrasë Prerëse Bambuje Mesatare’,icon:‘🔪’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Cutting Board Small’,nameAL:‘Dërrasë Prerëse Bambuje e Vogël’,icon:‘🔪’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Serving Board 3-Section’,nameAL:‘Tabaka Servimi Bambuje 3 Ndarje’,icon:‘🥗’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Serving Bowl Large’,nameAL:‘Tas Servimi Bambuje i Madh’,icon:‘🥣’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Serving Bowl Medium’,nameAL:‘Tas Servimi Bambuje Mesatar’,icon:‘🥣’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Mini Bowl Set 6pcs’,nameAL:‘Set Tasash Mini Bambuje 6 Copë’,icon:‘🥣’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Sauce Bowl Set 4pcs’,nameAL:‘Set Tasash Salce Bambuje 4 Copë’,icon:‘🥣’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Salad Tongs’,nameAL:‘Pinça Salcë Bambuje’,icon:‘🥗’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Spatula Set 3pcs’,nameAL:‘Set Spatulash Bambuje 3 Copë’,icon:‘🍴’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Spoon Set 5pcs’,nameAL:‘Set Lugësh Bambuje 5 Copë’,icon:‘🥄’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Bread Board’,nameAL:‘Dërrasë Buke Bambuje’,icon:‘🍞’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Cheese Board with Knife’,nameAL:‘Tabaka Djathi Bambuje me Thikë’,icon:‘🧀’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Breakfast Tray’,nameAL:‘Tabaka Mëngjes Bambuje’,icon:‘☕’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Fruit Bowl’,nameAL:‘Tas Frutash Bambuje’,icon:‘🍎’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Round Serving Plate’,nameAL:‘Pjatë Servimi Rrumbullake Bambuje’,icon:‘🍽️’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Lazy Susan Rotating Tray’,nameAL:‘Tabaka Rrotulluese Bambuje’,icon:‘🔄’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Kitchen Utensil Holder’,nameAL:‘Mbajtëse Takëmesh Bambuje’,icon:‘🍴’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Paper Towel Holder’,nameAL:‘Mbajtëse Letrash Bambuje’,icon:‘🧻’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Napkin Rings Set 4pcs’,nameAL:‘Set Unazash Pecetash Bambuje 4 Copë’,icon:‘🍽️’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Condiment Set’,nameAL:‘Set Erëzash Bambuje’,icon:‘🧂’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Tea Tray’,nameAL:‘Tabaka Çaji Bambuje’,icon:‘🍵’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Sushi Board’,nameAL:‘Tabaka Sushi Bambuje’,icon:‘🍱’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Steak Board with Groove’,nameAL:‘Dërrasë Biftek Bambuje me Kanal’,icon:‘🥩’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Wine Rack 6-Bottle’,nameAL:‘Raft Vere Bambuje 6 Shishe’,icon:‘🍷’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Spice Rack’,nameAL:‘Raft Erëzash Bambuje’,icon:‘🌶️’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Placemat Set 4pcs’,nameAL:‘Set Sfungjeri Tryeze Bambuje 4 Copë’,icon:‘🍽️’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Antipasto Board’,nameAL:‘Tabaka Antipasto Bambuje’,icon:‘🫒’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Cocktail Muddler’,nameAL:‘Goditëse Koktejesh Bambuje’,icon:‘🍹’},
+{brand:‘Bambum’,cat:‘serveware’,nameEN:‘Bamboo Coaster Set 6pcs’,nameAL:‘Set Nëntasash Bambuje 6 Copë’,icon:‘☕’},
+// OCEAN GLASS
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Red Wine Glass 350ml Set 6’,nameAL:‘Gotë Vere të Kuqe 350ml Set 6’,icon:‘🍷’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘White Wine Glass 280ml Set 6’,nameAL:‘Gotë Vere të Bardhë 280ml Set 6’,icon:‘🥂’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Champagne Flute 180ml Set 6’,nameAL:‘Gotë Shampanje 180ml Set 6’,icon:‘🥂’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Bordeaux Wine Glass 550ml Set 6’,nameAL:‘Gotë Vere Bordeaux 550ml Set 6’,icon:‘🍷’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Burgundy Wine Glass 600ml Set 6’,nameAL:‘Gotë Vere Burgundy 600ml Set 6’,icon:‘🍷’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Water Glass 300ml Set 6’,nameAL:‘Gotë Uji 300ml Set 6’,icon:‘💧’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Water Glass 400ml Set 6’,nameAL:‘Gotë Uji 400ml Set 6’,icon:‘💧’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Juice Glass 250ml Set 6’,nameAL:‘Gotë Lëngu 250ml Set 6’,icon:‘🧃’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Juice Glass 350ml Set 6’,nameAL:‘Gotë Lëngu 350ml Set 6’,icon:‘🧃’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Highball Glass 350ml Set 6’,nameAL:‘Gotë Highball 350ml Set 6’,icon:‘🥃’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Highball Glass 470ml Set 6’,nameAL:‘Gotë Highball 470ml Set 6’,icon:‘🥃’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Rocks Glass 290ml Set 6’,nameAL:‘Gotë Whisky Rocks 290ml Set 6’,icon:‘🥃’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Old Fashioned Glass 310ml Set 6’,nameAL:‘Gotë Old Fashioned 310ml Set 6’,icon:‘🥃’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Cocktail Martini Glass 150ml Set 6’,nameAL:‘Gotë Koktej Martini 150ml Set 6’,icon:‘🍸’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Margarita Glass 340ml Set 6’,nameAL:‘Gotë Margarita 340ml Set 6’,icon:‘🍹’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Beer Mug 500ml Set 4’,nameAL:‘Gotë Birre 500ml Set 4’,icon:‘🍺’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Beer Pilsner Glass 380ml Set 6’,nameAL:‘Gotë Birre Pilsner 380ml Set 6’,icon:‘🍺’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Shot Glass 60ml Set 6’,nameAL:‘Gotë Shot 60ml Set 6’,icon:‘🥃’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Shot Glass 90ml Set 6’,nameAL:‘Gotë Shot 90ml Set 6’,icon:‘🥃’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Cappuccino Glass 200ml Set 6’,nameAL:‘Gotë Kapuçino 200ml Set 6’,icon:‘☕’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Latte Glass 350ml Set 6’,nameAL:‘Gotë Latte 350ml Set 6’,icon:‘☕’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Irish Coffee Glass 260ml Set 6’,nameAL:‘Gotë Irish Coffee 260ml Set 6’,icon:‘☕’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Espresso Glass 90ml Set 6’,nameAL:‘Gotë Espresso 90ml Set 6’,icon:‘☕’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Mixing Glass 750ml’,nameAL:‘Gotë Miksuese 750ml’,icon:‘🍹’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Decanter 750ml’,nameAL:‘Karafë Vere 750ml’,icon:‘🍷’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Decanter 1L’,nameAL:‘Karafë Vere 1L’,icon:‘🍷’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Water Carafe 1.5L’,nameAL:‘Karafë Uji 1.5L’,icon:‘💧’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Whisky Tumbler Set 6’,nameAL:‘Set Gotësh Whisky 6 Copë’,icon:‘🥃’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Stemless Wine Glass 450ml Set 6’,nameAL:‘Gotë Vere Pa Këmbë 450ml Set 6’,icon:‘🍷’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Long Drink Glass 420ml Set 6’,nameAL:‘Gotë Long Drink 420ml Set 6’,icon:‘🥤’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Cocktail Coupe Glass 210ml Set 6’,nameAL:‘Gotë Koktej Coupe 210ml Set 6’,icon:‘🥂’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Hurricane Glass 450ml Set 4’,nameAL:‘Gotë Hurricane 450ml Set 4’,icon:‘🍹’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Mojito Glass 400ml Set 6’,nameAL:‘Gotë Mojito 400ml Set 6’,icon:‘🍹’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Pint Glass 570ml Set 4’,nameAL:‘Gotë Pint 570ml Set 4’,icon:‘🍺’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Goblet Water Glass 370ml Set 6’,nameAL:‘Gotë Uji Goblet 370ml Set 6’,icon:‘💧’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Double Wall Espresso 80ml Set 2’,nameAL:‘Gotë Espresso Mur i Dyfishtë 80ml Set 2’,icon:‘☕’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Double Wall Latte 350ml Set 2’,nameAL:‘Gotë Latte Mur i Dyfishtë 350ml Set 2’,icon:‘☕’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Brandy Snifter 320ml Set 6’,nameAL:‘Gotë Brandy Snifter 320ml Set 6’,icon:‘🍷’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Prosecco Flute 200ml Set 6’,nameAL:‘Gotë Prosecco 200ml Set 6’,icon:‘🥂’},
+{brand:‘OCEAN’,cat:‘glassware’,nameEN:‘Complete Bar Glass Set 48pcs’,nameAL:‘Set i Plotë Gotash Bar 48 Copë’,icon:‘🍸’},
 ];
 
 const filters = [
-  {key:'all', labelEN:'All Products', labelAL:'Të Gjitha'},
-  {key:'cookware', labelEN:'Cookware', labelAL:'Enë Gatimi'},
-  {key:'bakeware', labelEN:'Bakeware', labelAL:'Pjekje'},
-  {key:'serveware', labelEN:'Serveware', labelAL:'Serviset'},
-  {key:'glassware', labelEN:'Glassware', labelAL:'Qelq'},
+{key:‘all’, labelEN:‘All Products’, labelAL:‘Të Gjitha’},
+{key:‘cookware’, labelEN:‘Cookware’, labelAL:‘Enë Gatimi’},
+{key:‘bakeware’, labelEN:‘Bakeware’, labelAL:‘Pjekje’},
+{key:‘serveware’, labelEN:‘Serveware’, labelAL:‘Serviset’},
+{key:‘glassware’, labelEN:‘Glassware’, labelAL:‘Qelq’},
 ];
 
-let currentFilter = 'all';
-const lang = () => document.body.classList.contains('lang-al') ? 'al' : 'en';
+let currentFilter = ‘all’;
+const lang = () => document.body.classList.contains(‘lang-al’) ? ‘al’ : ‘en’;
 
 function renderFilters() {
-  const bar = document.getElementById('filterBar');
-  bar.innerHTML = filters.map(f =>
-    `<button class="filter-btn${f.key === currentFilter ? ' active' : ''}" onclick="applyFilter('${f.key}')">
-      <span data-en>${f.labelEN}</span><span data-al>${f.labelAL}</span>
-    </button>`
-  ).join('');
-  // Re-apply lang visibility
-  const l = lang();
-  bar.querySelectorAll('[data-en]').forEach(el => el.style.display = l === 'en' ? '' : 'none');
-  bar.querySelectorAll('[data-al]').forEach(el => el.style.display = l === 'al' ? '' : 'none');
+const bar = document.getElementById(‘filterBar’);
+bar.innerHTML = filters.map(f =>
+`<button class="filter-btn${f.key === currentFilter ? ' active' : ''}" onclick="applyFilter('${f.key}')"> <span data-en>${f.labelEN}</span><span data-al>${f.labelAL}</span> </button>`
+).join(’’);
+// Re-apply lang visibility
+const l = lang();
+bar.querySelectorAll(’[data-en]’).forEach(el => el.style.display = l === ‘en’ ? ‘’ : ‘none’);
+bar.querySelectorAll(’[data-al]’).forEach(el => el.style.display = l === ‘al’ ? ‘’ : ‘none’);
 }
 
 function renderProducts(filter) {
-  currentFilter = filter;
-  const grid = document.getElementById('productsGrid');
-  const filtered = filter === 'all' ? products : products.filter(p => p.cat === filter);
-  const l = lang();
-  grid.innerHTML = filtered.map(p =>
-    `<div class="product-card">
-      <div class="product-card-img"><div class="no-img">${p.icon}</div></div>
-      <div class="product-card-body">
-        <div class="product-card-brand">${p.brand}</div>
-        <div class="product-card-name">${l === 'al' ? p.nameAL : p.nameEN}</div>
-        <div class="product-card-cat">${getCatLabel(p.cat, l)}</div>
-      </div>
-    </div>`
-  ).join('');
-  updateCount();
-  renderFilters();
+currentFilter = filter;
+const grid = document.getElementById(‘productsGrid’);
+const filtered = filter === ‘all’ ? products : products.filter(p => p.cat === filter);
+const l = lang();
+grid.innerHTML = filtered.map(p =>
+`<div class="product-card"> <div class="product-card-img"><div class="no-img">${p.icon}</div></div> <div class="product-card-body"> <div class="product-card-brand">${p.brand}</div> <div class="product-card-name">${l === 'al' ? p.nameAL : p.nameEN}</div> <div class="product-card-cat">${getCatLabel(p.cat, l)}</div> </div> </div>`
+).join(’’);
+updateCount();
+renderFilters();
 }
 
 function getCatLabel(cat, l) {
-  const labels = {
-    cookware: {en:'Cookware · HoReCa & Home', al:'Enë Gatimi · HoReCa & Shtëpi'},
-    bakeware: {en:'Bakeware · Home', al:'Pjekje · Shtëpi'},
-    serveware: {en:'Serveware · HoReCa & Home', al:'Serviset · HoReCa & Shtëpi'},
-    glassware: {en:'Glassware · HoReCa & Home', al:'Qelq · HoReCa & Shtëpi'},
-  };
-  return labels[cat][l];
+const labels = {
+cookware: {en:‘Cookware · HoReCa & Home’, al:‘Enë Gatimi · HoReCa & Shtëpi’},
+bakeware: {en:‘Bakeware · Home’, al:‘Pjekje · Shtëpi’},
+serveware: {en:‘Serveware · HoReCa & Home’, al:‘Serviset · HoReCa & Shtëpi’},
+glassware: {en:‘Glassware · HoReCa & Home’, al:‘Qelq · HoReCa & Shtëpi’},
+};
+return labels[cat][l];
 }
 
 function applyFilter(key) {
-  renderProducts(key);
-}
-
-function updateCount() {
-  const filtered = currentFilter === 'all' ? products : products.filter(p => p.cat === currentFilter);
-  const l = lang();
-  document.getElementById('productsCount').textContent =
-    l === 'al' ? `Duke shfaqur ${filtered.length} produkte` : `Showing ${filtered.length} products`;
-}
-
-// Init
-setLang('en');
-renderProducts('all');
-</script>
-
-</body>
-</html>
+renderProducts(
