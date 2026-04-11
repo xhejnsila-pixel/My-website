@@ -290,7 +290,7 @@ section{padding:4rem 1.5rem}.hc{padding:0 1.5rem}.hi{width:100%;opacity:.12}
   </div>
   <div class="fb2"><div class="fc">© 2024 SEDOR · Mama's First Choice · Tirana, Albania</div><div class="fc" id="ft8"></div></div>
 </footer>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const T={
 en:{n1:'Clients',n2:'Brands',n3:'Products',n4:'Albania',n5:'Wholesale',n6:'Contact',
 h1:'Premium Kitchenware · Albania',h2:'Where Every Kitchen Finds Its Heart',
@@ -466,7 +466,7 @@ const g=document.getElementById('pgrid');
 if(g)g.innerHTML=list.map(p=>{
   const name=lang==='al'?p.al:p.en;
   const desc=p.den?(lang==='al'?p.dal:p.den):'';
-  const img=p.img?'<img src="'+p.img+'" alt="'+name+'" onerror="this.parentElement.innerHTML=\''+p.i+'\'">'  :p.i;
+  const img=p.img?'<img src="'+p.img+'" alt="'+name+'" onerror="this.style.display=\'none\'">' :p.i;
   const price=p.price?'<div class="pcp">'+p.price+'</div>':'';
   const descHtml=desc?'<div class="pcd">'+desc+'</div>':'';
   return '<div class="pcard"><div class="pci">'+img+'</div><div class="pcb"><div class="pcbr">'+p.b+'</div><div class="pcn">'+name+'</div><div class="pcc">'+t.cat[p.c]+'</div>'+descHtml+price+'</div></div>';
@@ -480,4 +480,10 @@ if(bar)bar.innerHTML=[
 }
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('sc',scrollY>50));
 new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')}),{threshold:.08}).observe.bind(null);
-document.querySelectorAll('.rev').forEach(r=>new IntersectionObserv
+document.querySelectorAll('.rev').forEach(r=>new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')}),{threshold:.08}).observe(r));
+function openMN(){document.getElementById('mn').classList.add('open');document.getElementById('mo').classList.add('open')}
+function closeMN(){document.getElementById('mn').classList.remove('open');document.getElementById('mo').classList.remove('open')}
+L('en');
+</script>
+</body>
+</html>
