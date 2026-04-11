@@ -463,7 +463,14 @@ cur=f;
 const t=T[lang];
 const list=f==='all'?P:P.filter(p=>p.c===f);
 const g=document.getElementById('pgrid');
-if(g)g.innerHTML=list.map(p=>`<div class="pcard"><div class="pci">${p.img?`<img src="${p.img}" alt="${lang==='al'?p.al:p.en}" onerror="this.parentElement.innerHTML='${p.i}'">`:`${p.i}`}</div><div class="pcb"><div class="pcbr">${p.b}</div><div class="pcn">${lang==='al'?p.al:p.en}</div><div class="pcc">${t.cat[p.c]}</div>${p.den?`<div class="pcd">${lang==='al'?p.dal:p.den}</div>`:''} ${p.price?`<div class="pcp">${p.price}</div>`:''}</div></div>`).join('');
+if(g)g.innerHTML=list.map(p=>{
+  const name=lang==='al'?p.al:p.en;
+  const desc=p.den?(lang==='al'?p.dal:p.den):'';
+  const img=p.img?'<img src="'+p.img+'" alt="'+name+'" onerror="this.parentElement.innerHTML=\''+p.i+'\'">'  :p.i;
+  const price=p.price?'<div class="pcp">'+p.price+'</div>':'';
+  const descHtml=desc?'<div class="pcd">'+desc+'</div>':'';
+  return '<div class="pcard"><div class="pci">'+img+'</div><div class="pcb"><div class="pcbr">'+p.b+'</div><div class="pcn">'+name+'</div><div class="pcc">'+t.cat[p.c]+'</div>'+descHtml+price+'</div></div>';
+}).join('');
 const c=document.getElementById('pcount');
 if(c)c.textContent=t.cnt(list.length);
 const bar=document.getElementById('filterBar');
